@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="撸猫,">
+  <meta name="keywords" content="raspberry,树莓派,">
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="keywords" content="撸猫">
+<meta name="description" content="Nodejs安装*以下命令皆在命令行输入  进入指定文件夹cd /home/pi（也可以选择其他文件夹） 下载nodejsNodejs版本要选择armv71的 1wget https://nodejs.org/dist/v6.9.1/node-v6.9.1-linux-armv7l.tar.gz（版本号根据需要选择）  如果速度慢，可以自己去上面的网址下载  解压文件 1tar zxvf node">
+<meta name="keywords" content="raspberry,树莓派">
 <meta property="og:type" content="article">
-<meta property="og:title" content="撸猫日记">
-<meta property="og:url" content="http://yoursite.com/2019/03/20/撸猫日记/index.html">
+<meta property="og:title" content="树莓派搭建MQTT">
+<meta property="og:url" content="http://yoursite.com/2019/07/04/树莓派搭建MQTT/index.html">
 <meta property="og:site_name" content="猫窝">
+<meta property="og:description" content="Nodejs安装*以下命令皆在命令行输入  进入指定文件夹cd /home/pi（也可以选择其他文件夹） 下载nodejsNodejs版本要选择armv71的 1wget https://nodejs.org/dist/v6.9.1/node-v6.9.1-linux-armv7l.tar.gz（版本号根据需要选择）  如果速度慢，可以自己去上面的网址下载  解压文件 1tar zxvf node">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://bolg-1253436879.cos.ap-chengdu.myqcloud.com/WX20190320-230605.png">
-<meta property="og:updated_time" content="2019-04-06T01:58:25.000Z">
+<meta property="og:updated_time" content="2019-07-04T07:28:22.818Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="撸猫日记">
-<meta name="twitter:image" content="https://bolg-1253436879.cos.ap-chengdu.myqcloud.com/WX20190320-230605.png">
+<meta name="twitter:title" content="树莓派搭建MQTT">
+<meta name="twitter:description" content="Nodejs安装*以下命令皆在命令行输入  进入指定文件夹cd /home/pi（也可以选择其他文件夹） 下载nodejsNodejs版本要选择armv71的 1wget https://nodejs.org/dist/v6.9.1/node-v6.9.1-linux-armv7l.tar.gz（版本号根据需要选择）  如果速度慢，可以自己去上面的网址下载  解压文件 1tar zxvf node">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/20/撸猫日记/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/04/树莓派搭建MQTT/">
 
 
 
 
 
-  <title>撸猫日记 | 猫窝</title>
+  <title>树莓派搭建MQTT | 猫窝</title>
   
 
 
@@ -269,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/20/撸猫日记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/04/树莓派搭建MQTT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xavier">
@@ -286,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">撸猫日记</h1>
+          <h1 class="post-title" itemprop="name headline">树莓派搭建MQTT</h1>
         
 
         <div class="post-meta">
@@ -298,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-20T22:51:50+08:00">
-                2019-03-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-04T15:18:11+08:00">
+                2019-07-04
               </time>
             
 
@@ -321,8 +322,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
+                  <a href="/categories/NodeJs/" itemprop="url" rel="index">
+                    <span itemprop="name">NodeJs</span>
                   </a>
                 </span>
 
@@ -358,12 +359,40 @@
       
 
       
-        <p><img src="https://bolg-1253436879.cos.ap-chengdu.myqcloud.com/WX20190320-230605.png" alt="大壮"><br><a id="more"></a></p>
-<p>每天最幸福的事情就是一边上班一边撸猫了。</p>
-<p>今天终于又把blog给重新搭起来了，之前的又白写了，因为源文件被我给删了。</p>
-<p>不过也罢，反正是写的东西也不是很有价值…</p>
-<p>之所以想起来重新弄博客的初衷，竟然是为了学习Flutter！</p>
-<p>希望这次自己能够记录一些有价值的东西，包括生活和学习…</p>
+        <h2 id="Nodejs安装"><a href="#Nodejs安装" class="headerlink" title="Nodejs安装"></a>Nodejs安装</h2><p>*以下命令皆在命令行输入</p>
+<ol>
+<li>进入指定文件夹<br>cd /home/pi（也可以选择其他文件夹）</li>
+<li><p>下载nodejs<br>Nodejs版本要选择armv71的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://nodejs.org/dist/v6.9.1/node-v6.9.1-linux-armv7l.tar.gz（版本号根据需要选择）</span><br></pre></td></tr></table></figure>
+<p> 如果速度慢，可以自己去上面的网址下载</p>
+</li>
+<li><p>解压文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf node-v6.9.1-linux-armv7l.tar.gz （文件名跟自己下载的相符）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将解压好的nodejs剪切到下面的bin文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv node-v6.9.1-linux-armv7l  /usr/local/bin（文件名跟解压的相符）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建node快捷方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln /usr/local/bin/node-v6.9.1-linux-armv7l/bin/node /usr/local/bin/node（文件名跟解压的相符）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建npm快捷方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /usr/local/bin/node-v6.9.1-linux-armv7l/lib/node_modules/npm/bin/npm /usr/local/bin/npm（文件名跟解压的相符）</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>正常是已经OK了，使用node –v和npm –v，发现npm找不到</p>
+<p>将/usr/local/bin/node-v6.9.1-linux-armv7l/lib下的node_modules复制到/usr/local/bin下</p>
+<p>进入/usr/local/bin文件夹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd  /usr/local/bin</span><br><span class="line">sudo cp –r /usr/local/bin/node-v6.9.1-linux-armv7l/lib/node_modules /usr/local/bin</span><br></pre></td></tr></table></figure></p>
+<p>已经就是nodejs配置完成</p>
+<h2 id="Mqtt服务端安装"><a href="#Mqtt服务端安装" class="headerlink" title="Mqtt服务端安装"></a>Mqtt服务端安装</h2><p>新建一个js文件，输入如下测试代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var mosca = require(&apos;mosca&apos;);  </span><br><span class="line">var MqttServer = new mosca.Server(&#123;  </span><br><span class="line">port: 1883  </span><br><span class="line">&#125;);  </span><br><span class="line">MqttServer.on(&apos;clientConnected&apos;, function(client)&#123;  </span><br><span class="line">    	console.log(&apos;client connected&apos;, client.id);  </span><br><span class="line">&#125;);  </span><br><span class="line">  </span><br><span class="line">/** </span><br><span class="line"> * 监听MQTT主题消息 </span><br><span class="line"> **/  </span><br><span class="line">MqttServer.on(&apos;published&apos;, function(packet, client) &#123;  </span><br><span class="line">    var topic = packet.topic;  </span><br><span class="line">    console.log(&apos;message-arrived---&gt;&apos;,&apos;topic =&apos;+topic+&apos;,message = &apos;+ packet.payload.toString());  </span><br><span class="line">  </span><br><span class="line">&#125;);  </span><br><span class="line">MqttServer.on(&apos;ready&apos;, function()&#123;  </span><br><span class="line">    console.log(&apos;mqtt is running...&apos;);  </span><br><span class="line">    //MqttServer.authenticate = authenticate;  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装mosca"><a href="#安装mosca" class="headerlink" title="安装mosca"></a>安装mosca</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm  i  mosca –save</span><br></pre></td></tr></table></figure>
+<p>安装完成以后运行上面的代码完成。</p>
+<h2 id="安装vnc-可选"><a href="#安装vnc-可选" class="headerlink" title="安装vnc(可选)"></a>安装vnc(可选)</h2><p>在树莓派安装vnc<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install tightvncserver</span><br></pre></td></tr></table></figure></p>
+<p>增加一个桌面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Tightvncserver</span><br></pre></td></tr></table></figure></p>
+<p>根据提示设置一个访问桌面的密码</p>
+<p>根据提示设置一个仅能看树莓派着的密码</p>
+<p>设置完成后，回到一个桌面的ID，例如是1</p>
+<p>在windows打开vnc（如果未安装请自行安装），输入树莓派ip加桌面id，例如：192.168.0.102:1<br>输入密码访问密码</p>
+<p>现在可以访问树莓派!</p>
 
       
     </div>
@@ -381,7 +410,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/撸猫/" rel="tag"># 撸猫</a>
+            <a href="/tags/raspberry/" rel="tag"># raspberry</a>
+          
+            <a href="/tags/树莓派/" rel="tag"># 树莓派</a>
           
         </div>
       
@@ -394,15 +425,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/04/18/没什么感想/" rel="next" title="没什么感想">
+                <i class="fa fa-chevron-left"></i> 没什么感想
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/21/Sequelize常用功能/" rel="prev" title="Sequelize常用功能">
-                Sequelize常用功能 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -454,8 +485,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -517,6 +557,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nodejs安装"><span class="nav-number">1.</span> <span class="nav-text">Nodejs安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mqtt服务端安装"><span class="nav-number">2.</span> <span class="nav-text">Mqtt服务端安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装mosca"><span class="nav-number">3.</span> <span class="nav-text">安装mosca</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装vnc-可选"><span class="nav-number">4.</span> <span class="nav-text">安装vnc(可选)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
