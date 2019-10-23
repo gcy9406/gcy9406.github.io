@@ -81,18 +81,17 @@
 
 
 
-<meta name="description" content="nginx常用功能记录">
 <meta name="keywords" content="nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx相关操作">
 <meta property="og:url" content="http://yoursite.com/2019/10/23/Nginx相关操作/index.html">
 <meta property="og:site_name" content="猫窝">
-<meta property="og:description" content="nginx常用功能记录">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-23T10:40:01.844Z">
+<meta property="og:image" content="http://www.hhhub.cn:2019/medias/nginx.jpeg">
+<meta property="og:updated_time" content="2019-10-23T11:34:44.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx相关操作">
-<meta name="twitter:description" content="nginx常用功能记录">
+<meta name="twitter:image" content="http://www.hhhub.cn:2019/medias/nginx.jpeg">
 
 
 
@@ -359,8 +358,12 @@
       
 
       
-        <p>nginx常用功能记录<br><a id="more"></a></p>
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3>
+        <p><img src="http://www.hhhub.cn:2019/medias/nginx.jpeg" alt="Nginx"><br><a id="more"></a></p>
+<h1 id="Windows开机启动"><a href="#Windows开机启动" class="headerlink" title="Windows开机启动"></a>Windows开机启动</h1><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="http://www.hhhub.cn:729/gcy/file/WinSW.exe" target="_blank" rel="noopener">点击下载</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="将软件放到nginx目录-并将名称改为nginx-service-exe"><a href="#将软件放到nginx目录-并将名称改为nginx-service-exe" class="headerlink" title="将软件放到nginx目录,并将名称改为nginx-service.exe"></a>将软件放到nginx目录,并将名称改为nginx-service.exe</h3><h3 id="新建nginx-service-xml文件"><a href="#新建nginx-service-xml文件" class="headerlink" title="新建nginx-service.xml文件"></a>新建nginx-service.xml文件</h3><p>键入内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- nginx-service.xml --&gt;</span><br><span class="line">&lt;service&gt;</span><br><span class="line">    &lt;id&gt;nginx&lt;/id&gt;</span><br><span class="line">    &lt;name&gt;nginx&lt;/name&gt;</span><br><span class="line">    &lt;description&gt;nginx&lt;/description&gt;</span><br><span class="line">    &lt;logpath&gt;(填写nginx目录，如：D:nginx-1.14.0\)&lt;/logpath&gt;</span><br><span class="line">    &lt;logmode&gt;roll&lt;/logmode&gt;</span><br><span class="line">    &lt;depend&gt;&lt;/depend&gt;</span><br><span class="line">    &lt;executable&gt;(填写nginx目录和命令，如：D:nginx-1.14.0\nginx.exe)&lt;/executable&gt;</span><br><span class="line">    &lt;stopexecutable&gt;(填写nginx目录和命令，如：D:nginx-1.14.0\nginx.exe -s stop)&lt;/stopexecutable&gt;</span><br><span class="line">&lt;/service&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="安装服务"><a href="#安装服务" class="headerlink" title="安装服务"></a>安装服务</h3><p>在nginx文件夹根目录中打开命令行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\nginx-service.exe install</span><br></pre></td></tr></table></figure></p>
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\nginx-service.exe start</span><br></pre></td></tr></table></figure>
+<h1 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h1>
       
     </div>
     
@@ -532,7 +535,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载"><span class="nav-number">1.</span> <span class="nav-text">下载</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows开机启动"><span class="nav-number">1.</span> <span class="nav-text">Windows开机启动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">1.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#将软件放到nginx目录-并将名称改为nginx-service-exe"><span class="nav-number">1.2.1.</span> <span class="nav-text">将软件放到nginx目录,并将名称改为nginx-service.exe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建nginx-service-xml文件"><span class="nav-number">1.2.2.</span> <span class="nav-text">新建nginx-service.xml文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装服务"><span class="nav-number">1.2.3.</span> <span class="nav-text">安装服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动服务"><span class="nav-number">1.2.4.</span> <span class="nav-text">启动服务</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#未完待续"><span class="nav-number">2.</span> <span class="nav-text">未完待续</span></a></li></ol></div>
             
 
           </div>
