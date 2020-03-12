@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>随笔2020-03-12</title>
+    <link href="/2020/03/12/%E9%9A%8F%E7%AC%942020-03-12/"/>
+    <url>/2020/03/12/%E9%9A%8F%E7%AC%942020-03-12/</url>
+    
+    <content type="html"><![CDATA[<p>今天早上的天气很不错，心情也很不错，所以工作只简单的做了些，就去倒腾WordPress了。</p><p>但是下午开始，天气就转阴了。</p><p>说好的几天都是多云呢？这天气预报就没有准过。</p><p>天气不好，心情也不好。</p><p>WordPress搞了半天，感觉没意思，还是hexo香。</p><p>也不知道是这几天运动的原因，还是起得早原因，或者是两者的共同原因，这今天都感觉很累。特别是今天，感觉眼睛都要睁不开了。</p><p>搞得现在工作都不想做了，想打人！</p><p>算了，还是去洗把脸，清醒清醒吧，认真工作，认真生活！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>不知道为啥</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>随笔2019-12-31</title>
+    <link href="/2019/12/31/%E9%9A%8F%E7%AC%942019-12-31/"/>
+    <url>/2019/12/31/%E9%9A%8F%E7%AC%942019-12-31/</url>
+    
+    <content type="html"><![CDATA[<p>12月31日，2019年即将离去了。</p><p>2020年，以前是一个多么遥不可及的数字，现在却即将踏入这崭新的一年。</p><p>2019年对我而言，应该是此生最难忘的一年吧。</p><p>因为这一年，发生了两个极端的事情，一个极端开心，一个极端痛苦。</p><p>不详细说了…</p><p>愿2020一切都好！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>辞旧迎新</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>随笔2019-11-13</title>
+    <link href="/2019/11/13/%E9%9A%8F%E7%AC%942019-11-13/"/>
+    <url>/2019/11/13/%E9%9A%8F%E7%AC%942019-11-13/</url>
+    
+    <content type="html"><![CDATA[<p>本来封面想找一个大胖和大壮小时候的照片的，但是翻照片的时候却又受不了，还是来一张虎喵的，虎喵又捡了个大便宜。</p><p>最近真是穷疯了。</p><p>恰逢最近又是双十一，又花了不少钱，所以来记录一下最近这段苦逼的日子。</p><p>每个月的工资钱都不够还的，这个月初就还了一万多，马上月底了又要还一万多，信用卡、房贷…</p><p>龙泉的项目的钱说这个月能给，也一直在拖，这个月如果还不给，我也只能说抱歉了。就一万多块钱一直拖，真是无语。</p><p>今天空了是应该好好的整理下钱是怎么花出去的了，要不然每个月稀里糊涂的，日子没法过了。</p><p>日子虽然苦，但是还是有很多事情值得开心。</p><p>比如：大胖又恢复了往日雄风，肥的像个球，不得不控制他的饮食了，太能吃了。果然养猫还得舍得花钱。</p><p>我要努力工作，让公司强大些，我也多赚点，天天混日子的话，等着喝西北风了。</p><p>加油工作，加油学习，加油锻炼，加油爱老婆！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>双十一</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>EMQTT服务搭建</title>
+    <link href="/2019/10/31/EMQTT%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/"/>
+    <url>/2019/10/31/EMQTT%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>参考：<a href="https://docs.emqx.io/broker/v3/cn/" target="_blank" rel="noopener">https://docs.emqx.io/broker/v3/cn/</a></p></blockquote><h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>Ubuntu 16.04 LTS amd64(64bit)</p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="安装所需要的依赖包"><a href="#安装所需要的依赖包" class="headerlink" title="安装所需要的依赖包"></a>安装所需要的依赖包</h2><pre><code>$ sudo apt update &amp;&amp; sudo apt install -y \    apt-transport-https \    ca-certificates \    curl \    gnupg-agent \software-properties-common</code></pre><h2 id="添加EMQ-X的官方密钥"><a href="#添加EMQ-X的官方密钥" class="headerlink" title="添加EMQ X的官方密钥"></a>添加EMQ X的官方密钥</h2><pre><code>$ curl -fsSL https://repos.emqx.io/gpg.pub | sudo apt-key add –$ sudo apt-key fingerprint 3E640D53pub   rsa2048 2019-04-10 [SC]    FC84 1BA6 3775 5CA8 487B  1E3C C0B4 0946 3E64 0D53uid           [ unknown] emqx team &lt;support@emqx.io&gt;</code></pre><p>如果没现pub…再添加一次</p><h2 id="使用以下命令设置-stable-存储库。-如果要添加-unstable-存储库，请在以下命令中的单词-stable-之后添加单词-unstable"><a href="#使用以下命令设置-stable-存储库。-如果要添加-unstable-存储库，请在以下命令中的单词-stable-之后添加单词-unstable" class="headerlink" title="使用以下命令设置 stable 存储库。 如果要添加 unstable 存储库，请在以下命令中的单词 stable 之后添加单词 unstable"></a>使用以下命令设置 stable 存储库。 如果要添加 unstable 存储库，请在以下命令中的单词 stable 之后添加单词 unstable</h2><pre><code>$ sudo add-apt-repository \    &quot;deb [arch=amd64] https://repos.emqx.io/emqx-ce/deb/ubuntu/ \    $(lsb_release -cs) \    stable&quot;</code></pre><h2 id="更新-apt-包索引"><a href="#更新-apt-包索引" class="headerlink" title="更新 apt 包索引"></a>更新 apt 包索引</h2><pre><code>$ sudo apt update</code></pre><h2 id="查询可用版本"><a href="#查询可用版本" class="headerlink" title="查询可用版本"></a>查询可用版本</h2><pre><code>$ sudo apt-cache madison emqx</code></pre><h2 id="使用第二列中的版本字符串安装特定版本，例如-3-2-6"><a href="#使用第二列中的版本字符串安装特定版本，例如-3-2-6" class="headerlink" title="使用第二列中的版本字符串安装特定版本，例如 3.2.6"></a>使用第二列中的版本字符串安装特定版本，例如 3.2.6</h2><pre><code>$ sudo apt install emqx=3.2.6</code></pre><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="设置用户权限"><a href="#设置用户权限" class="headerlink" title="设置用户权限"></a>设置用户权限</h2><h3 id="关闭匿名访问"><a href="#关闭匿名访问" class="headerlink" title="关闭匿名访问"></a>关闭匿名访问</h3><ul><li><p>打开/etc/emqx文件夹下的emqx.conf</p></li><li><p>设置allow_anonymous = false</p></li></ul><h3 id="开启用户名认证"><a href="#开启用户名认证" class="headerlink" title="开启用户名认证"></a>开启用户名认证</h3><pre><code>sudo emqx_ctl plugins load emqx_auth_username</code></pre><h3 id="添加认证用户"><a href="#添加认证用户" class="headerlink" title="添加认证用户"></a>添加认证用户</h3><pre><code>sudo emqx_ctl userssudo emqx_ctl users add 用户名 密码</code></pre><h3 id="配置规则"><a href="#配置规则" class="headerlink" title="配置规则"></a>配置规则</h3><ul><li><p>打开/etc/eqmx文件夹下的acl.conf</p></li><li><p>找到以下内容</p><pre><code>  %% 允许 &#39;dashboard&#39; 用户订阅 &#39;$SYS/#&#39;  {allow, {user, &quot;dashboard&quot;}, subscribe, [&quot;$SYS/#&quot;]}.  %% 允许本机用户发布订阅全部主题  {allow, {ipaddr, &quot;127.0.0.1&quot;}, pubsub, [&quot;$SYS/#&quot;, &quot;#&quot;]}.  %% 拒绝除本机用户以外的其他用户订阅 &#39;$SYS/#&#39; 与 &#39;#&#39; 主题  {deny, all, subscribe, [&quot;$SYS/#&quot;, {eq, &quot;#&quot;}]}.  %% 允许上述规则以外的任何情形  {allow, all}.</code></pre></li><li><p>修改权限</p><p>  将{allow, {user, “dashboard”}, subscribe, [“$SYS/#”]}删除，不允许用户订阅统配符</p></li></ul><h1 id="设置集群"><a href="#设置集群" class="headerlink" title="设置集群"></a>设置集群</h1><h2 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h2><p>打开/etc/emqx/emq.conf，找到node.name</p><h2 id="修改节点"><a href="#修改节点" class="headerlink" title="修改节点"></a>修改节点</h2><pre><code>node.name=emq@局域网IP</code></pre><h2 id="加入集群"><a href="#加入集群" class="headerlink" title="加入集群"></a>加入集群</h2><pre><code>sudo emqx_ctl cluster join emq@主服务器</code></pre><h2 id="离开集群"><a href="#离开集群" class="headerlink" title="离开集群"></a>离开集群</h2><p>主动离开<br></p><pre><code>sudo emqx_ctl luseter leave &lt;br&gt;</code></pre><p>从集群中删除<br></p><pre><code>sudo emqx_ctl cluster force-leave emq@要删除的服务器</code></pre><h1 id="启动EMQX"><a href="#启动EMQX" class="headerlink" title="启动EMQX"></a>启动EMQX</h1><h2 id="直接启动"><a href="#直接启动" class="headerlink" title="直接启动"></a>直接启动</h2><pre><code>$ emqx start</code></pre><h2 id="systemctl-启动"><a href="#systemctl-启动" class="headerlink" title="systemctl 启动"></a>systemctl 启动</h2><pre><code>$ sudo systemctl start emqx</code></pre><h2 id="service-启动"><a href="#service-启动" class="headerlink" title="service 启动"></a>service 启动</h2><pre><code>$ sudo service emqx start</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>mqtt</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>微信公众号支付记录</title>
+    <link href="/2019/10/31/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%94%AF%E4%BB%98%E8%AE%B0%E5%BD%95/"/>
+    <url>/2019/10/31/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E6%94%AF%E4%BB%98%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="微信支付环境"><a href="#微信支付环境" class="headerlink" title="微信支付环境"></a>微信支付环境</h1><h2 id="在微信支付后台配置好支付目录"><a href="#在微信支付后台配置好支付目录" class="headerlink" title="在微信支付后台配置好支付目录"></a>在微信支付后台配置好支付目录</h2><p>在微信商户平台（pay.weixin.qq.com）设置您的公众号支付支付目录，设置路径：商户平台–&gt;产品中心–&gt;开发配置.</p><p>公众号支付需要配置支付授权目录，将在这个目录里面发起支付，如果不设置是无法调用微信支付的。<br>如：<a href="http://www.hhhub.cn/wechat/pay" target="_blank" rel="noopener">http://www.hhhub.cn/wechat/pay</a><br><img src="http://www.hhhub.cn:2019/medias/wechat_pay_1.png" srcset="/img/loading.gif" alt="wechat_pay"></p><h2 id="公众号后台配置"><a href="#公众号后台配置" class="headerlink" title="公众号后台配置"></a>公众号后台配置</h2><p>公众号支付必须要有openid才行，这里需要在公众号配置网页授权域名。<br>这里需要让微信能够访问到txt中的内容。<br><img src="http://www.hhhub.cn:2019/medias/wechat_pay_2.png" srcset="/img/loading.gif" alt="wechat_pay"></p><p>使用nodejs可以简单实现</p><pre><code>var  http  =  require(&#39;http&#39;);  http.createServer(function  (request,  response)  {      response.writeHead(200,  {&#39;Content-Type&#39;:  &#39;text/html;  charset=utf-8&#39;});      if(request.url!==&quot;/favicon.ico&quot;){        response.write(&#39;txt的内容&#39;); //这里填写微信给的文本内容         response.end();     }  }).listen(80);  console.log(&#39;Server  running  at  http://127.0.0.1:8000/&#39;);  </code></pre><p>执行以上代码，就可以配置成功。</p><h1 id="nodejs后台配置"><a href="#nodejs后台配置" class="headerlink" title="nodejs后台配置"></a>nodejs后台配置</h1><h2 id="获得openid"><a href="#获得openid" class="headerlink" title="获得openid"></a>获得openid</h2><p>打开如下连接并重定向到redirect_uri后面的连接中<br>需要主要的是该链接需要进行加密<br>编码地址</p><blockquote><p><a href="http://tool.chinaz.com/tools/urlencode.aspx" target="_blank" rel="noopener">http://tool.chinaz.com/tools/urlencode.aspx</a></p></blockquote><pre><code>    //例 1.1    //express示例代码    exports.bindWechat = function(req,res){        let state = req.query.state;        res.redirect(&#39;https://open.weixin.qq.com/connect/oauth2/authorize?appid=【微信AppID】&amp;redirect_uri=【https%3a%2f%2fwww.netrelay.cn%2fwechat】&amp;response_type=code&amp;scope=snsapi_base&amp;state=&#39;+state+&#39;#wechat_redirect&#39;);    }</code></pre><p>重定向后从query中取出code,你用request取出openid</p><pre><code>//例 1.2//express示例代码    let url = &quot;https://api.weixin.qq.com/sns/oauth2/access_token?appid=【微信AppID】&amp;secret=【微信secret】&amp;code=&quot;+req.query.code+&quot;&amp;grant_type=authorization_code&quot;;    request(url, function (error, response, body) {        let content = JSON.parse(body);        let openid = content.openid;    })</code></pre><h2 id="后台生成调起支付的必备参数"><a href="#后台生成调起支付的必备参数" class="headerlink" title="后台生成调起支付的必备参数"></a>后台生成调起支付的必备参数</h2><p>调用微信支付需要一系列的复杂步骤，这里直接引用工具类<a href="http://www.hhhub.cn:2019/file/wxpay.js" target="_blank" rel="noopener">wxpay</a></p><pre><code>//例 1.3exports.gsmOrderPay = function (req, res, next) {    //以下几个参数看文档 https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_1    wxpay.orderWithDetail(attach,body,detail, mch_id, openid,bookingNo, total, notify_url).then(function(data){        res.json({            args: data        });    });};</code></pre><p>这里需要注意的是notify_url，这个连接需要是一个post接口.<br>在这里能够收到订单反馈的信息，并且需要上报给微信，否则微信会一直向接口发送post请求。</p><pre><code>//例 1.4exports.notify = function(req, res, next){    let info = req.body.xml;//微信订单返回的信息    res.end(wxpay.notify(req.body.xml));//回馈给微信})</code></pre><h1 id="前段配置"><a href="#前段配置" class="headerlink" title="前段配置"></a>前段配置</h1><p>前段需要引入jsapi</p><blockquote><script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script></blockquote><p>发起支付</p><pre><code>    function payGsm() {        $.ajax({            url: &#39;/user/gsm_order/toPay&#39;,//这个post请求是请求到上面的例1.3            dataType: &quot;JSON&quot;,            type: &#39;POST&#39;,            data: {total:total},            success:function(data){                if (typeof WeixinJSBridge == &quot;undefined&quot;) {                    if (document.addEventListener) {                        document.addEventListener(&#39;WeixinJSBridgeReady&#39;, onBridgeReady, false);                    } else if (document.attachEvent) {                        document.attachEvent(&#39;WeixinJSBridgeReady&#39;, onBridgeReady);                        document.attachEvent(&#39;onWeixinJSBridgeReady&#39;, onBridgeReady);                    }                } else {                    //data.args的args来自于例1.3返回的args                    onBridgeReady(data.args);                }            },            error: function (err) {            }        });    }    function onBridgeReady(args) {        WeixinJSBridge.invoke(            &quot;getBrandWCPayRequest&quot;, {                &quot;appId&quot;: args.appId,     //公众号名称，由商户传入                &quot;timeStamp&quot;: args.timeStamp,         //时间戳，自1970年以来的秒数                &quot;nonceStr&quot;: args.nonceStr, //随机串                &quot;package&quot;: &quot;prepay_id=&quot;+args.package,                &quot;signType&quot;: args.signType, //微信签名方式：                &quot;paySign&quot;: args.paySign //微信签名,            }, function (res) {                //res.err_msg == &quot;get_brand_wcpay_request:ok&quot; 表示支付成功，按需处理结果                if (res.err_msg == &quot;get_brand_wcpay_request:ok&quot;) {                    window.location.replace(&quot;/scan/callpay/gsm&quot;);                } else {                    window.location.replace(&quot;/scan/callpay/failed&quot;);                }            });    }</code></pre><p>比较乱，后面再重新整理，现做一下简单记录，防止忘了。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>NodeJs</tag>
+      
+      <tag>微信</tag>
+      
+      <tag>支付</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>随笔2019-10-30</title>
+    <link href="/2019/10/30/%E9%9A%8F%E7%AC%942019-10-30/"/>
+    <url>/2019/10/30/%E9%9A%8F%E7%AC%942019-10-30/</url>
+    
+    <content type="html"><![CDATA[<p>最近这些天感觉好累，是秋乏吗？还是跑了点步？还是睡眠少了？</p><p>不知道什么原因，反正乏的很，躺在床上伸个懒腰就感觉很舒服。</p><p>左眼也感觉很累，想闭目养神，却又忍不住看手机。为了保护眼睛还是要少玩手机，把一些没什么必要的APP还是戒了吧，需要的时候再看，没必要的时候看看书，这不香吗？</p><p>上面的都是小事情，严重的是我前天跑步流鼻血，昨天嘴里吐出血。虽然我知道鼻血是我抠鼻屎导致的鼻黏膜损伤，吐血是因为牙龈出血或者嘴唇干裂出的血，但是还是很担心自己的健康。身体的革命的本钱，可不能再懒惰，运动什么的不能停，毕竟现在已经是一个190的大胖子了。</p><p>老婆的换岗终于成功了，许多波折总算完了，愿一切都好。</p><p>后天就是30岁的正生了，真是时光荏苒。我有时候就像一个鸵鸟一样，很多事情一想就会鼻子酸，于是立马分散注意力逃避掉那些伤感的事情，过好现在的生活。</p><p>最近这几年，也算过的顺风顺水吧，大问题基本没有，也愿往后的生活也能像现在这样有小烦恼但风平浪静。</p><p>最后跟自己打打气，提起精神，为生活努力！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>累</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Nginx相关操作</title>
+    <link href="/2019/10/23/Nginx%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/"/>
+    <url>/2019/10/23/Nginx%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Windows开机启动"><a href="#Windows开机启动" class="headerlink" title="Windows开机启动"></a>Windows开机启动</h1><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="http://www.hhhub.cn:2019/file/WinSW.exe" target="_blank" rel="noopener">点击下载</a></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="将软件放到nginx目录-并将名称改为nginx-service-exe"><a href="#将软件放到nginx目录-并将名称改为nginx-service-exe" class="headerlink" title="将软件放到nginx目录,并将名称改为nginx-service.exe"></a>将软件放到nginx目录,并将名称改为nginx-service.exe</h3><h3 id="新建nginx-service-xml文件"><a href="#新建nginx-service-xml文件" class="headerlink" title="新建nginx-service.xml文件"></a>新建nginx-service.xml文件</h3><p>键入内容</p><pre><code>&lt;!-- nginx-service.xml --&gt;&lt;service&gt;    &lt;id&gt;nginx&lt;/id&gt;    &lt;name&gt;nginx&lt;/name&gt;    &lt;description&gt;nginx&lt;/description&gt;    &lt;logpath&gt;(填写nginx目录，如：D:nginx-1.14.0\)&lt;/logpath&gt;    &lt;logmode&gt;roll&lt;/logmode&gt;    &lt;depend&gt;&lt;/depend&gt;    &lt;executable&gt;(填写nginx目录和命令，如：D:nginx-1.14.0\nginx.exe)&lt;/executable&gt;    &lt;stopexecutable&gt;(填写nginx目录和命令，如：D:nginx-1.14.0\nginx.exe -s stop)&lt;/stopexecutable&gt;&lt;/service&gt;</code></pre><h3 id="安装服务"><a href="#安装服务" class="headerlink" title="安装服务"></a>安装服务</h3><p>在nginx文件夹根目录中打开命令行</p><pre><code>.\nginx-service.exe install </code></pre><h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><pre><code>.\nginx-service.exe start</code></pre><h1 id="Ubuntu下的操作"><a href="#Ubuntu下的操作" class="headerlink" title="Ubuntu下的操作"></a>Ubuntu下的操作</h1><h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><pre><code>sudo apt-get install nginx</code></pre><h2 id="自动启动服务"><a href="#自动启动服务" class="headerlink" title="自动启动服务"></a>自动启动服务</h2><pre><code>sudo systemctl enable nginx #开启服务sudo systemctl disable nginx #关闭服务</code></pre><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><pre><code>sudo systemctl start nginx  #启用nginx服务nginx #启动nginxnginx -s stop #停止nginxnginx -s reload #重启nginx</code></pre><h2 id="强行停止"><a href="#强行停止" class="headerlink" title="强行停止"></a>强行停止</h2><pre><code>ps -ef | grep nginx #查询进程IDkill -9 ID #强制停止</code></pre><h1 id="常规配置"><a href="#常规配置" class="headerlink" title="常规配置"></a>常规配置</h1><h2 id="ssh证书配置"><a href="#ssh证书配置" class="headerlink" title="ssh证书配置"></a>ssh证书配置</h2><p>按如下配置即可</p><pre><code>server {    listen 443 ssl;    server_name  www.xxx.cn; #域名    ssl_certificate xxx.cn.crt; #下载的证书，放在当前文件夹中    ssl_certificate_key xxx.cn.key; #下载的证书    ssl_session_timeout 5m;    ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #按照这个协议配置    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置    ssl_prefer_server_ciphers on;    location / {        proxy_set_header Upgrade $http_upgrade;        proxy_set_header Connection &quot;upgrade&quot;;        proxy_http_version 1.1;        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;        proxy_set_header Host $host;        proxy_pass http://127.0.0.1:1111; #指向后台程序        proxy_redirect off;    }}</code></pre><h2 id="80端口转443端口"><a href="#80端口转443端口" class="headerlink" title="80端口转443端口"></a>80端口转443端口</h2><p>之前APP是80端口，现在升级为HTTPS后，post请求变成GET了。<br>按如下配置判断是否是POST请求，如果是用原来的接口返回，否则转移到443</p><pre><code>server {    listen 80;    server_name www.xxx.cn;    location / {        if ($request_method ~ ^(POST)$) {            proxy_pass http://127.0.0.1:8765;            break ;        }        return 301 https://www.xxx.cn$request_uri;    }}</code></pre><p>如果不需要判断POST，直接替换为443即可</p><pre><code>server {    listen 80;    server_name www.xxx.cn;    return 301 https://www.xxx.cn$request_uri;}# 添加个443 server，和上面的443一致</code></pre><h2 id="上传图片太大，导致失败"><a href="#上传图片太大，导致失败" class="headerlink" title="上传图片太大，导致失败"></a>上传图片太大，导致失败</h2><p>需要在nginx配置文件中添加如下配置</p><pre><code>client_max_body_size 1024m; # 大小自己定#server {#    listen 80;#}</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>nginx</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>随笔2019-10-23</title>
+    <link href="/2019/10/23/%E9%9A%8F%E7%AC%942019-10-23/"/>
+    <url>/2019/10/23/%E9%9A%8F%E7%AC%942019-10-23/</url>
+    
+    <content type="html"><![CDATA[<p>最近还是好事不断<br>我不是一个喜欢分享的人，连最近结婚我都没有发个朋友圈什么的。</p><p>但是今天老婆换岗了，那必须要纪念一下，因为意义比较重要。</p><ul><li>她不用坐柜了，客户千千万，什么类型的都有，所以每天遇到不开心的事情很正常。换岗了，就不用再去受这个罪了。</li><li>我也不用听她的抱怨了，虽然知道她很辛苦，但是真的已经听腻了，也没法呀。</li><li>国庆回来就一直想吃乌鱼片都没有去吃，今天就庆祝一下一起去吃喽。</li></ul><p>虽然现在很穷哦，但是相信一切都会变好起来了。</p><p>我自己的考研、减肥都要坚持住,一起加油吧！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>换岗</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Windows安装Redis和添加开机启动服务</title>
+    <link href="/2019/10/23/Windows%E5%AE%89%E8%A3%85Redis/"/>
+    <url>/2019/10/23/Windows%E5%AE%89%E8%A3%85Redis/</url>
+    
+    <content type="html"><![CDATA[<p>Windows上安装Redis和服务，做下记录</p><h3 id="下载Reis（版本3-2-100）"><a href="#下载Reis（版本3-2-100）" class="headerlink" title="下载Reis（版本3.2.100）"></a>下载Reis（版本3.2.100）</h3><p>我的服务器下载地址<br><a href="http://www.hhhub.cn:2019/file/Redis-x64-3.2.100.zip" target="_blank" rel="noopener">点击下载</a><br>也可以在github下载，就是太慢了<br><a href="https://github.com/MicrosoftArchive/redis/releases" target="_blank" rel="noopener">GitHub下载</a><br>百度网盘下载<br>链接: <a href="https://pan.baidu.com/s/1AC_k0XnL8JnMOPDTA3cb_w" target="_blank" rel="noopener">https://pan.baidu.com/s/1AC_k0XnL8JnMOPDTA3cb_w</a> 提取码: bkjg</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul><li>解压下载文件到指定目录<blockquote><p>不需要启动下面3步可以忽略</p></blockquote></li><li>进入Redis文件reids-server.exe的目录</li><li>在此文件夹打开命令行</li><li>输入reids-server.exe启动redis</li></ul><h3 id="安装服务"><a href="#安装服务" class="headerlink" title="安装服务"></a>安装服务</h3><p>进入redis根目录</p><pre><code>redis-server.exe --service-install redis.windows.conf</code></pre><p>服务安装成功</p><p>进入服务列表启动下服务完成操作</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>redis</tag>
+      
+      <tag>Windows</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>随笔2019-10-22</title>
+    <link href="/2019/10/22/%E9%9A%8F%E7%AC%942019-10-22/"/>
+    <url>/2019/10/22/%E9%9A%8F%E7%AC%942019-10-22/</url>
+    
+    <content type="html"><![CDATA[<p>我去查了下手机，大壮是2019-7-18号走的。<br>是的，我已经忘记了时间，所以我也以为我已经忘记了失去大壮的痛苦。<br><br><br>打开博客的相册，看到了大壮、大胖、虎喵，看到了我们过去在一起的日子，眼泪还是不争气的流了出来。<br><br><br>所有的美好，都一去不复返了…<br><br><br>我真的好懊悔，我对不起你们。<br><br><br>这一生，我辜负了你们，如果真的有来生，我希望大壮投胎到好的人家。<br><br><br>不想说了，就到这吧，太难受了。<br><br><br>思念之苦。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>想念</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>PM2开机启动</title>
+    <link href="/2019/10/22/PM2%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/"/>
+    <url>/2019/10/22/PM2%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Windows开机启动"><a href="#Windows开机启动" class="headerlink" title="Windows开机启动"></a>Windows开机启动</h2><ul><li>安装启动库</li></ul><pre><code>npm install pm2-windows-startup -g</code></pre><ul><li>执行命令</li></ul><pre><code>pm2-startup install</code></pre><ul><li>设置开机启动</li></ul><pre><code>pm2 start [程序]</code></pre><pre><code>pm2 startup</code></pre><pre><code>pm2 save</code></pre><h2 id="Linux开机启动"><a href="#Linux开机启动" class="headerlink" title="Linux开机启动"></a>Linux开机启动</h2><p>linux开机启动分为三步</p><pre><code>pm2 start [程序]</code></pre><pre><code>pm2 startup</code></pre><pre><code>pm2 save</code></pre><p>重启测试，如果不成功，根据提示操作即可。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>NodeJs</tag>
+      
+      <tag>pm2</tag>
+      
+      <tag>开机启动</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>树莓派搭建MQTT</title>
+    <link href="/2019/07/04/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAMQTT/"/>
+    <url>/2019/07/04/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%90%AD%E5%BB%BAMQTT/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Nodejs安装"><a href="#Nodejs安装" class="headerlink" title="Nodejs安装"></a>Nodejs安装</h2><p>*以下命令皆在命令行输入</p><ol><li>进入指定文件夹<br>cd /home/pi（也可以选择其他文件夹）</li><li><p>下载nodejs<br>Nodejs版本要选择armv71的</p><pre><code>wget https://nodejs.org/dist/v6.9.1/node-v6.9.1-linux-armv7l.tar.gz（版本号根据需要选择）</code></pre><p> 如果速度慢，可以自己去上面的网址下载</p></li><li><p>解压文件</p><pre><code>tar zxvf node-v6.9.1-linux-armv7l.tar.gz （文件名跟自己下载的相符）</code></pre></li><li><p>将解压好的nodejs剪切到下面的bin文件夹</p><pre><code>sudo mv node-v6.9.1-linux-armv7l  /usr/local/bin（文件名跟解压的相符）</code></pre></li><li><p>创建node快捷方式</p><pre><code>sudo ln /usr/local/bin/node-v6.9.1-linux-armv7l/bin/node /usr/local/bin/node（文件名跟解压的相符）</code></pre></li><li>创建npm快捷方式<pre><code>sudo ln -s /usr/local/bin/node-v6.9.1-linux-armv7l/lib/node_modules/npm/bin/npm /usr/local/bin/npm（文件名跟解压的相符）</code></pre></li></ol><p>正常是已经OK了，使用node –v和npm –v，发现npm找不到</p><p>将/usr/local/bin/node-v6.9.1-linux-armv7l/lib下的node_modules复制到/usr/local/bin下</p><p>进入/usr/local/bin文件夹</p><pre><code>cd  /usr/local/binsudo cp –r /usr/local/bin/node-v6.9.1-linux-armv7l/lib/node_modules /usr/local/bin</code></pre><p>已经就是nodejs配置完成</p><h2 id="Mqtt服务端安装"><a href="#Mqtt服务端安装" class="headerlink" title="Mqtt服务端安装"></a>Mqtt服务端安装</h2><p>新建一个js文件，输入如下测试代码：</p><pre><code>var mosca = require(&#39;mosca&#39;);  var MqttServer = new mosca.Server({  port: 1883  });  MqttServer.on(&#39;clientConnected&#39;, function(client){          console.log(&#39;client connected&#39;, client.id);  });  /**  * 监听MQTT主题消息  **/  MqttServer.on(&#39;published&#39;, function(packet, client) {      var topic = packet.topic;      console.log(&#39;message-arrived---&gt;&#39;,&#39;topic =&#39;+topic+&#39;,message = &#39;+ packet.payload.toString());  });  MqttServer.on(&#39;ready&#39;, function(){      console.log(&#39;mqtt is running...&#39;);      //MqttServer.authenticate = authenticate;  }); </code></pre><h2 id="安装mosca"><a href="#安装mosca" class="headerlink" title="安装mosca"></a>安装mosca</h2><pre><code>npm  i  mosca –save</code></pre><p>安装完成以后运行上面的代码完成。</p><h2 id="安装vnc-可选"><a href="#安装vnc-可选" class="headerlink" title="安装vnc(可选)"></a>安装vnc(可选)</h2><p>在树莓派安装vnc</p><pre><code>sudo apt-get install tightvncserver</code></pre><p>增加一个桌面</p><pre><code>Tightvncserver</code></pre><p>根据提示设置一个访问桌面的密码</p><p>根据提示设置一个仅能看树莓派着的密码</p><p>设置完成后，回到一个桌面的ID，例如是1</p><p>在windows打开vnc（如果未安装请自行安装），输入树莓派ip加桌面id，例如：192.168.0.102:1<br>输入密码访问密码</p><p>现在可以访问树莓派!</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>NodeJs</tag>
+      
+      <tag>raspberry</tag>
+      
+      <tag>树莓派</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>随笔2019-04-18</title>
+    <link href="/2019/04/18/%E9%9A%8F%E7%AC%942019-04-18/"/>
+    <url>/2019/04/18/%E9%9A%8F%E7%AC%942019-04-18/</url>
+    
+    <content type="html"><![CDATA[<div style="width:100%" align="center"><br><video id="video" style="width:50%" controls preload="none" poster="https://bolg-1253436879.cos.ap-chengdu.myqcloud.com/1181555557840_.pic.jpg"><br>      <source id="mp4" src="https://bolg-1253436879.cos.ap-chengdu.myqcloud.com/1555556205683864.mp4" type="video/mp4"><br>      <p>视频</p><br></video><br></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>撸猫</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>随笔2019-04-06</title>
+    <link href="/2019/04/06/%E9%9A%8F%E7%AC%942019-04-06/"/>
+    <url>/2019/04/06/%E9%9A%8F%E7%AC%942019-04-06/</url>
+    
+    <content type="html"><![CDATA[<p>清明时节雨纷纷，路上行人欲断魂。</p><p>今年的清明节有点儿反常，28℃的天气，热的有点儿烦躁。</p><p>有时候觉得偏心真是一件可怕的事情。<br>我现在深知自己对三只猫的爱不能够平均，即使我百般的对大壮好，但是在我心中的地位他还是不及虎喵和大胖。<br><a id="more"></a><br>我之前偏心是因为大壮跟我太疏远，对我有戒心，渐渐的我也就对他有了偏见。<br>经过了几年的相处，他对我虽然还有点儿戒备，但是基本上他已经是最粘我的那一个了，但是他在我心中的位置还是无法和其他两个对等。</p><p>我在我的家里，我是老小。所以一直以来我都是集万千宠爱于一身的，爸妈把他们的全部都给了我，甚至本该属于我姐姐的也都挤出来了给我。<br>一直以来我都觉得这没有什么，这是我应得的，父母的爱当然是没有错。</p><p>直到现在，我住在了我老婆家，终于我扮演的角色发生了改变。我不再是那个对别人偏心的角色，也不再是被偏心的那一个了。</p><p>每天看着老丈人对小姨子的溺爱以及对老婆的不公我心里就非常不舒服。<br>同样是女儿，他把所有的都给了小女儿。什么东西首先想到的都是小女儿，晚饭本来是留给老婆的他都要让他的小女儿吃足够了，反正大女儿要减肥？<br>早上煮个面，只煮了自己和小女儿的，自己大女儿那么喜欢吃面，不知道吗？多放几个面条会怎样？</p><p>但是，好像只有我一个人感受到了。</p><p>我现在终于能体会到，我的姐姐们之前应该也是这样过来的吧？毕竟我们是一个爹妈生的，我们的性格能差别多少呢？他们应该也像我一样强烈感受到了吧？</p><p>都30的人了，想到这些事还是会忍不住想哭。</p><p>希望我和我的小姨子都能明白父母是多么的偏心，以后要好好的对自己的姐姐，把本不属于自己的东西能够尽量还回去。</p><image src="https://bolg-1253436879.cos.ap-chengdu.myqcloud.com/1061554515804_.pic.jpg" style="width:100%;height:auto"></image>]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>偏心</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>async模块使用</title>
+    <link href="/2019/03/21/async%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/"/>
+    <url>/2019/03/21/async%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/</url>
+    
+    <content type="html"><![CDATA[<h2 id="顺序执行"><a href="#顺序执行" class="headerlink" title="顺序执行"></a>顺序执行</h2><h3 id="异步循环操作"><a href="#异步循环操作" class="headerlink" title="异步循环操作"></a>异步循环操作</h3><p>示例</p><pre><code>const async = require(&#39;async&#39;);const axios = require(&#39;axios&#39;);//计数let count = 0;//测试数据var urlList = [&#39;test1.html&#39;,&#39;test2.html&#39;,&#39;test3.html&#39;,&#39;test4.html&#39;,&#39;test5.html&#39;];//执行方法let action = function(callback){    //测试数据    console.log(urlList[count]);    //异步请求    axios.get(&#39;https://hhclub.net/api/v1/getVideos&#39;)    .then(function(res){        //执行完数量加1        count++;        console.dir(count);        //回调函数        callback(null,count);    })}//计数方法let countFunc = function(){    //小于多少就执行多少次，如这里是执行5次    return count &lt; 5;}//开始执行，使用whilst方法async.whilst(countFunc,action,function(err){    if (err) {        console.dir(err);    }    console.log(&#39;结束&#39;)})</code></pre><p>打印结果</p><pre><code>test1.html1test2.html2test3.html3test4.html4test5.html5结束</code></pre><h3 id="添加延迟"><a href="#添加延迟" class="headerlink" title="添加延迟"></a>添加延迟</h3><p>示例</p><pre><code>var async = require(&#39;async&#39;);let action1 = function(callback){    console.log(&#39;执行时间：&#39;+new Date().getTime());    callback(null,&#39;action1&#39;);}let action2 = function(callback){    console.log(&#39;执行时间：&#39;+new Date().getTime());    callback(null,&#39;action2&#39;);}let action3 = function(callback){    console.log(&#39;执行时间：&#39;+new Date().getTime());    callback(null,&#39;action3&#39;);}let action4 = function(callback){    console.log(&#39;执行时间：&#39;+new Date().getTime());    callback(null,&#39;action4&#39;);}let delay = function(callback){    setTimeout(function(){        callback(null,&#39;delay&#39;);    },2000)}async.series([action1,delay,action2,delay,action3,delay,action4,delay],function(err){    if (err) {        console.dir(err);    }    console.log(&#39;结束&#39;+new Date().getTime())})</code></pre><p>打印结果</p><pre><code>执行时间：1553185376354执行时间：1553185378362执行时间：1553185380365执行时间：1553185382371结束1553185384373</code></pre><h2 id="并行执行"><a href="#并行执行" class="headerlink" title="并行执行"></a>并行执行</h2><p>并行执行和顺序执行类似，并行执行是多个函数同时运行，最后一个执行完后结束</p><p>使用方法</p><pre><code>parallel(tasks,[callback])</code></pre><h2 id="瀑布流执行"><a href="#瀑布流执行" class="headerlink" title="瀑布流执行"></a>瀑布流执行</h2><p>下一个函数需要上一个执行结果</p><p>使用方法</p><pre><code>waterfall(tasks,[callback])</code></pre><p>示例</p><pre><code>var task1 =function(callback){    console.log(&quot;task1&quot;);    callback(null,&quot;11&quot;)}//param为第一个函数的结果var task2 =function(param,callback){    console.log(&quot;task2&quot;);    callback(null,&quot;22&quot;)}async.waterfall([task1,task2],function(err,result){    if (err) {        console.log(err);    }    console.log(&quot;result : &quot;+result);})</code></pre><h2 id="无限循环"><a href="#无限循环" class="headerlink" title="无限循环"></a>无限循环</h2><p>可以用作循环加延迟</p><p>使用方法</p><pre><code>forever([callback])</code></pre><p>示例</p><pre><code>var async = require(&#39;async&#39;);var count = 0;async.forever(function(callback){    console.log(&quot;当前结果：&quot;+new Date().getTime());    count++;    if (count&gt;10) {        callback(&quot;finish&quot;);        return;    }    //添加一秒延迟    setTimeout(function () {        callback();    },1000)},function(err){    console.log(err);});</code></pre><p>输出结果</p><pre><code>当前结果：1553186956484当前结果：1553186957494当前结果：1553186958496当前结果：1553186959499当前结果：1553186960501当前结果：1553186961503当前结果：1553186962505当前结果：1553186963510当前结果：1553186964516当前结果：1553186965519当前结果：1553186966524finish</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>NodeJs</tag>
+      
+      <tag>async</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Sequelize常用功能</title>
+    <link href="/2019/03/21/Sequelize%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD/"/>
+    <url>/2019/03/21/Sequelize%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD/</url>
+    
+    <content type="html"><![CDATA[<h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>npm i sequelize --save</code></pre><h3 id="基本参数"><a href="#基本参数" class="headerlink" title="基本参数"></a>基本参数</h3><pre><code>global.seq =  new Sequelize(&#39;数据库名称&#39;, &#39;用户名&#39;, &#39;密码&#39;,{    host: &#39;数据库地址（如：127.0.0.1）&#39;,    dialect: &#39;数据库类型（如：mysql）&#39;,    port: 数据库端口（如：3306）,    pool: {//线程池配置        max: 5,        min: 0,        idle: 30000    },    logging:true,//是否在控制台打印sql语句    timezone: &#39;+08:00&#39; //东八时区，不设置存入数据库的时间可能不对});</code></pre><h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><pre><code>seq.define(&#39;test&#39;, {    // auto increment, primaryKey, unique    id: {type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true, unique: true},    updatedAt: {type: Sequelize.INTEGER, allowNull: false},    createdAt: {type: Sequelize.INTEGER, allowNull: false}}, {    timestamps: true,//设置为true，自动设置update和create    freezeTableName: true//设置为true，表的名字和数据库一直，否则要变成复数加s});</code></pre><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="order排序"><a href="#order排序" class="headerlink" title="order排序"></a>order排序</h3><pre><code>CameraList.findAll({    where:{        account:user    },    order: [        [&#39;timestamp&#39;, &#39;ASC&#39;],//第一字段        [&#39;name&#39;,&#39;ASC&#39;]//第二字段    ]})</code></pre><h3 id="where条件"><a href="#where条件" class="headerlink" title="where条件"></a>where条件</h3><pre><code>Project.findAll({  where: {    id: {      $and: {a: 5}           // AND (a = 5)      $or: [{a: 5}, {a: 6}]  // (a = 5 OR a = 6)      $gt: 6,                // id &gt; 6      $gte: 6,               // id &gt;= 6      $lt: 10,               // id &lt; 10      $lte: 10,              // id &lt;= 10      $ne: 20,               // id != 20      $between: [6, 10],     // BETWEEN 6 AND 10      $notBetween: [11, 15], // NOT BETWEEN 11 AND 15      $in: [1, 2],           // IN [1, 2]      $notIn: [1, 2],        // NOT IN [1, 2]      $like: &#39;%hat&#39;,         // LIKE &#39;%hat&#39;      $notLike: &#39;%hat&#39;       // NOT LIKE &#39;%hat&#39;      $iLike: &#39;%hat&#39;         // ILIKE &#39;%hat&#39; (case insensitive)  (PG only)      $notILike: &#39;%hat&#39;      // NOT ILIKE &#39;%hat&#39;  (PG only)      $overlap: [1, 2]       // &amp;&amp; [1, 2] (PG array overlap operator)      $contains: [1, 2]      // @&gt; [1, 2] (PG array contains operator)      $contained: [1, 2]     // &lt;@ [1, 2] (PG array contained by operator)      $any: [2,3]            // ANY ARRAY[2, 3]::INTEGER (PG only)    },    status: {      $not: false,           // status NOT FALSE    }  }})</code></pre><h3 id="替换字符串"><a href="#替换字符串" class="headerlink" title="替换字符串"></a>替换字符串</h3><pre><code>Project.findAll({ where: [&quot;id &gt; ?&quot;, 25] }).then(function(projects) {  // projects 是一个包含 Project 实例的数组，各实例的id 大于25})</code></pre><h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><pre><code>//求和Project.sum(&#39;field&#39;, where:{--条件--}  }).then(function(sum) {  // 输出和})//maxProject.max(&#39;field&#39;, where:{--条件--}  }).then(function(max) {  // 输出最大值})//minProject.min(&#39;field&#39;, where:{--条件--}  }).then(function(max) {  // 输出最小值})</code></pre><h3 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h3><pre><code>//调用Sequelize初始化之后的sequelize对象sequelize.transaction(function (t) {    //返回最终的Promise  return User.create({    firstName: &#39;Abraham&#39;,    lastName: &#39;Lincoln&#39;  }, {transaction: t}).then(function (user) {    return user.setShooter({      firstName: &#39;John&#39;,      lastName: &#39;Boothe&#39;    }, {transaction: t});  });}).then(function (result) {  //主动调用commit提交结果  return t.commit();}).catch(function (err) {  //主动回滚操作  return t.rollback();});</code></pre><h2 id="更多参考"><a href="#更多参考" class="headerlink" title="更多参考"></a>更多参考</h2><blockquote><p><a href="https://itbilu.com/nodejs/npm/V1PExztfb.html" target="_blank" rel="noopener">https://itbilu.com/nodejs/npm/V1PExztfb.html</a></p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>sequelize</tag>
+      
+      <tag>NodeJs</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>随笔2019-03-20</title>
+    <link href="/2019/03/20/%E9%9A%8F%E7%AC%942019-03-20/"/>
+    <url>/2019/03/20/%E9%9A%8F%E7%AC%942019-03-20/</url>
+    
+    <content type="html"><![CDATA[<p>每天最幸福的事情就是一边上班一边撸猫了。</p><p>今天终于又把blog给重新搭起来了，之前的又白写了，因为源文件被我给删了。</p><p>不过也罢，反正是写的东西也不是很有价值…</p><p>之所以想起来重新弄博客的初衷，竟然是为了学习Flutter！</p><p>希望这次自己能够记录一些有价值的东西，包括生活和学习…</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>撸猫</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
