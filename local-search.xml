@@ -384,9 +384,9 @@
     
     <tags>
       
-      <tag>NodeJs</tag>
-      
       <tag>async</tag>
+      
+      <tag>NodeJs</tag>
       
     </tags>
     
@@ -411,9 +411,9 @@
     
     <tags>
       
-      <tag>sequelize</tag>
-      
       <tag>NodeJs</tag>
+      
+      <tag>sequelize</tag>
       
     </tags>
     
