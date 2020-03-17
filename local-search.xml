@@ -8,7 +8,7 @@
     <link href="/2020/03/17/%E9%9A%8F%E7%AC%942020-03-17/"/>
     <url>/2020/03/17/%E9%9A%8F%E7%AC%942020-03-17/</url>
     
-    <content type="html"><![CDATA[<p>今日阳光明媚</p><p>一个好的天气真的能让人心情大好</p><p>你看，今天虽然烦心事很多，但是心情依旧不错</p><p>搞了一天半的oauth2，就是没有结果，不知道是哪里出了问题。不能这样下去了，先搁着了，要不然工作做不完了</p><p>好了，开始正式工作</p>]]></content>
+    <content type="html"><![CDATA[<p>今日阳光明媚</p><a id="more"></a><p>一个好的天气真的能让人心情大好</p><p>你看，今天虽然烦心事很多，但是心情依旧不错</p><p>搞了一天半的oauth2，就是没有结果，不知道是哪里出了问题。不能这样下去了，先搁着了，要不然工作做不完了</p><p>好了，开始正式工作</p>]]></content>
     
     
     <categories>
@@ -339,11 +339,11 @@
     
     <tags>
       
-      <tag>NodeJs</tag>
-      
       <tag>pm2</tag>
       
       <tag>开机启动</tag>
+      
+      <tag>NodeJs</tag>
       
     </tags>
     
@@ -474,9 +474,9 @@
     
     <tags>
       
-      <tag>sequelize</tag>
-      
       <tag>NodeJs</tag>
+      
+      <tag>sequelize</tag>
       
     </tags>
     
