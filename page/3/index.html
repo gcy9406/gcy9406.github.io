@@ -16,7 +16,7 @@
   <meta name="description" content>
   <meta name="author" content="Xavier">
   <meta name="keywords" content>
-  <title>PM2开机启动 - 猫窝</title>
+  <title>猫窝</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
@@ -40,7 +40,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">&nbsp;<strong>猫窝</strong>&nbsp;</a>
@@ -96,7 +96,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('http://www.hhhub.cn:2019/medias/kjz.jpg') no-repeat center center;
+         style="background: url('http://www.hhhub.cn:2019/medias/yhy.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -106,35 +106,12 @@
             </span>
 
             
-              
-                <p class="mt-3 post-meta">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  星期二, 十月 22日 2019, 5:50 下午
-                </p>
-              
-
-              <p class="mt-1">
-                
-                  
-                  <span class="post-meta">
-                    <i class="far fa-chart-bar"></i>
-                    75 字
-                  </span>
-                
-
-                
-                  
-                  <span class="post-meta">
-                      <i class="far fa-clock"></i>
-                      1 分钟
-                  </span>
-                
-
-                
-              </p>
-            
           </div>
 
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
           
         </div>
       </div>
@@ -143,87 +120,86 @@
 
   <main>
     
-      
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5 z-depth-3" id="board">
-          <div class="post-content mx-auto" id="post">
-            
-            <div class="markdown-body">
-              <h2 id="Windows开机启动"><a href="#Windows开机启动" class="headerlink" title="Windows开机启动"></a>Windows开机启动</h2><ul>
-<li>安装启动库</li>
-</ul>
-<pre><code>npm install pm2-windows-startup -g
-</code></pre><ul>
-<li>执行命令</li>
-</ul>
-<pre><code>pm2-startup install
-</code></pre><ul>
-<li>设置开机启动</li>
-</ul>
-<pre><code>pm2 start [程序]
-</code></pre><pre><code>pm2 startup
-</code></pre><pre><code>pm2 save
-</code></pre><h2 id="Linux开机启动"><a href="#Linux开机启动" class="headerlink" title="Linux开机启动"></a>Linux开机启动</h2><p>linux开机启动分为三步</p>
-<pre><code>pm2 start [程序]
-</code></pre><pre><code>pm2 startup
-</code></pre><pre><code>pm2 save
-</code></pre><p>重启测试，如果不成功，根据提示操作即可。</p>
 
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/03/20/随笔2019-03-20/" target="_self">
+          <img src="https://bolg-1253436879.cos.ap-chengdu.myqcloud.com/WX20190320-230605.png" srcset="/img/loading.gif" alt="随笔2019-03-20" class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2019/03/20/随笔2019-03-20/">
+        <p class="h4 index-header">随笔2019-03-20</p>
+      </a>
+
+      <a href="/2019/03/20/随笔2019-03-20/">
+        
+        
+          
+        
+        <div class="index-excerpt">
+          <div class="index-text mb-1">每天最幸福的事情就是一边上班一边撸猫了。
+今天终于又把blog给重新搭起来了，之前的又白写了，因为源文件被我给删了。
+不过也罢，反正是写的东西也不是很有价值…
+之所以想起来重新弄博客的初衷，竟然是为了学习Flutter！
+希望这次自己能够记录一些有价值的东西，包括生活和学习…
+</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-03-20&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/随笔/">随笔</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/撸猫/">撸猫</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
             </div>
-            <hr>
-            <div>
-              <p>
-                
-                  <span>
-                <i class="iconfont icon-inbox"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/技术博客/">技术博客</a>
-                      &nbsp;
-                    
-                  </span>&nbsp;&nbsp;
-                
-                
-                  <span>
-                <i class="iconfont icon-tag"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/NodeJs/">NodeJs</a>
-                    
-                      <a class="hover-with-bg" href="/tags/pm2/">pm2</a>
-                    
-                      <a class="hover-with-bg" href="/tags/开机启动/">开机启动</a>
-                    
-                  </span>
-                
-              </p>
-              
-            </div>
-
-            
           </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc-start"></div>
-<div id="toc">
-  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
   </main>
 
@@ -289,57 +265,6 @@
 
 
 
-  
-  <script src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      var navHeight = $('#navbar').height();
-      var post = $('#post');
-      var toc = $('#toc');
-      var tocLimMax = post.offset().top + post.height() - navHeight;
-
-      $(window).scroll(function () {
-        var tocLimMin = $('#toc-start').offset().top - navHeight;
-        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
-
-        if (tocLimMin <= scroH && scroH <= tocLimMax) {
-          toc.css({
-            'display': 'block',
-            'position': 'fixed',
-            'top': navHeight,
-          });
-        } else if (scroH <= tocLimMin) {
-          toc.css({
-            'position': '',
-            'top': '',
-          });
-        } else if (scroH > tocLimMax) {
-          toc.css('display', 'none');
-        }
-      });
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '.post-content',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        scrollSmooth: true,
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc > p').css('visibility', 'visible');
-      }
-      var offset = $('#board-ctn').css('margin-right')
-      $('#toc-ctn').css({
-        'right': offset
-      })
-    });
-  </script>
-
-
-
 
 
 
@@ -366,7 +291,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "PM2开机启动&nbsp;",
+        "Where there is a will , there is a way...&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
