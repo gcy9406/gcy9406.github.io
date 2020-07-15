@@ -16,7 +16,7 @@
   <meta name="description" content>
   <meta name="author" content="Xavier">
   <meta name="keywords" content>
-  <title>标签 - 猫窝</title>
+  <title>CSS超出范围自动省略 - 猫窝</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
@@ -40,7 +40,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -110,6 +110,33 @@
             </span>
 
             
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  星期三, 七月 15日 2020, 1:11 下午
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    201 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      1 分钟
+                  </span>
+                
+
+                
+              </p>
+            
           </div>
 
           
@@ -120,24 +147,86 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-<div class="text-center tagcloud">
-  <a href="/tags/NodeJs/" style="font-size: 30px; color: #337ab7">NodeJs</a> <a href="/tags/Windows/" style="font-size: 15px; color: #bbe">Windows</a> <a href="/tags/async/" style="font-size: 15px; color: #bbe">async</a> <a href="/tags/centos/" style="font-size: 15px; color: #bbe">centos</a> <a href="/tags/css/" style="font-size: 15px; color: #bbe">css</a> <a href="/tags/eggjs/" style="font-size: 15px; color: #bbe">eggjs</a> <a href="/tags/mqtt/" style="font-size: 15px; color: #bbe">mqtt</a> <a href="/tags/nginx/" style="font-size: 15px; color: #bbe">nginx</a> <a href="/tags/oauth2/" style="font-size: 15px; color: #bbe">oauth2</a> <a href="/tags/pm2/" style="font-size: 15px; color: #bbe">pm2</a> <a href="/tags/raspberry/" style="font-size: 15px; color: #bbe">raspberry</a> <a href="/tags/redis/" style="font-size: 15px; color: #bbe">redis</a> <a href="/tags/sequelize/" style="font-size: 15px; color: #bbe">sequelize</a> <a href="/tags/不知道为啥/" style="font-size: 15px; color: #bbe">不知道为啥</a> <a href="/tags/偏心/" style="font-size: 15px; color: #bbe">偏心</a> <a href="/tags/双十一/" style="font-size: 15px; color: #bbe">双十一</a> <a href="/tags/开机启动/" style="font-size: 15px; color: #bbe">开机启动</a> <a href="/tags/微信/" style="font-size: 15px; color: #bbe">微信</a> <a href="/tags/想念/" style="font-size: 15px; color: #bbe">想念</a> <a href="/tags/换岗/" style="font-size: 15px; color: #bbe">换岗</a> <a href="/tags/换行/" style="font-size: 15px; color: #bbe">换行</a> <a href="/tags/撸猫/" style="font-size: 22.5px; color: #779bd3">撸猫</a> <a href="/tags/支付/" style="font-size: 15px; color: #bbe">支付</a> <a href="/tags/树莓派/" style="font-size: 15px; color: #bbe">树莓派</a> <a href="/tags/累/" style="font-size: 15px; color: #bbe">累</a> <a href="/tags/辞旧迎新/" style="font-size: 15px; color: #bbe">辞旧迎新</a>
-</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <div class="markdown-body">
+              <h3 id="通过css设置文字强制不换行超出用省略号"><a href="#通过css设置文字强制不换行超出用省略号" class="headerlink" title="通过css设置文字强制不换行超出用省略号"></a>通过css设置文字强制不换行超出用省略号</h3><pre><code>{
+    white-space: nowrap; //文本强制不换行；
+    text-overflow:ellipsis; //文本溢出显示省略号；
+    overflow:hidden; //溢出的部分隐藏；
+}
+</code></pre><h3 id="超出两行用省略号"><a href="#超出两行用省略号" class="headerlink" title="超出两行用省略号"></a>超出两行用省略号</h3><pre><code>{
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+</code></pre><p>-webkit-line-clamp用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。<br>常见结合属性：</p>
+<ol>
+<li><p>display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。</p>
+</li>
+<li><p>-webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。</p>
+</li>
+</ol>
+<p>3.text-overflow: ellipsis;，可以用来多行文本的情况下，用省略号“…”隐藏超出范围的文本 。</p>
 
-              </div>
             </div>
+            <hr>
+            <div>
+              <p>
+                
+                  <span>
+                <i class="iconfont icon-inbox"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/技术博客/">技术博客</a>
+                      &nbsp;
+                    
+                  </span>&nbsp;&nbsp;
+                
+                
+                  <span>
+                <i class="iconfont icon-tag"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/css/">css</a>
+                    
+                      <a class="hover-with-bg" href="/tags/换行/">换行</a>
+                    
+                  </span>
+                
+              </p>
+              
+            </div>
+
+            
           </div>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc-start"></div>
+<div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
   </main>
 
@@ -205,6 +294,57 @@
 
 
 
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var post = $('#post');
+      var toc = $('#toc');
+      var tocLimMax = post.offset().top + post.height() - navHeight;
+
+      $(window).scroll(function () {
+        var tocLimMin = $('#toc-start').offset().top - navHeight;
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': navHeight,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+      var offset = $('#board-ctn').css('margin-right')
+      $('#toc-ctn').css({
+        'right': offset
+      })
+    });
+  </script>
+
+
+
 
 
 
@@ -231,7 +371,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签&nbsp;",
+        "CSS超出范围自动省略&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
