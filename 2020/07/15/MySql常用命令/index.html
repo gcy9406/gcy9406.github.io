@@ -16,7 +16,7 @@
   <meta name="description" content>
   <meta name="author" content="Xavier">
   <meta name="keywords" content>
-  <title>归档 - 猫窝</title>
+  <title>MySql常用命令 - 猫窝</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
@@ -40,7 +40,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -110,6 +110,33 @@
             </span>
 
             
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  星期三, 七月 15日 2020, 1:37 下午
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    123 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      1 分钟
+                  </span>
+                
+
+                
+              </p>
+            
           </div>
 
           
@@ -120,79 +147,84 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 29 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2019</p>
-    
-    <a href="/2019/10/31/EMQTT服务搭建/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">EMQTT服务搭建</span>
-      <span style="float: right;">10-31</span>
-    </a>
-  
-    
-    <a href="/2019/10/31/微信公众号支付记录/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">微信公众号支付记录</span>
-      <span style="float: right;">10-31</span>
-    </a>
-  
-    
-    <a href="/2019/10/30/随笔2019-10-30/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">随笔2019-10-30</span>
-      <span style="float: right;">10-30</span>
-    </a>
-  
-    
-    <a href="/2019/10/23/Nginx相关操作/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Nginx相关操作</span>
-      <span style="float: right;">10-23</span>
-    </a>
-  
-    
-    <a href="/2019/10/23/随笔2019-10-23/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">随笔2019-10-23</span>
-      <span style="float: right;">10-23</span>
-    </a>
-  
-    
-    <a href="/2019/10/23/Windows安装Redis/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Windows安装Redis和添加开机启动服务</span>
-      <span style="float: right;">10-23</span>
-    </a>
-  
-    
-    <a href="/2019/10/22/随笔2019-10-22/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">随笔2019-10-22</span>
-      <span style="float: right;">10-22</span>
-    </a>
-  
-    
-    <a href="/2019/10/22/PM2开机启动/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">PM2开机启动</span>
-      <span style="float: right;">10-22</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <div class="markdown-body">
+              <hr>
+<h2 id="添加一列"><a href="#添加一列" class="headerlink" title="添加一列"></a>添加一列</h2><a id="more"></a>
+<h3 id="最简单的添加"><a href="#最简单的添加" class="headerlink" title="最简单的添加"></a>最简单的添加</h3><pre><code>
+ALTER ... ADD COLUMN...
 
+</code></pre><h3 id="在表的最后一列添加新的一项"><a href="#在表的最后一列添加新的一项" class="headerlink" title="在表的最后一列添加新的一项"></a>在表的最后一列添加新的一项</h3><pre><code>
+ALTER TABLE `tbname`
 
-              </div>
+ ADD COLUMN `state` TINYINT(2) NOT NULL DEFAULT &#39;0&#39; COMMENT &#39;0为添加1为编辑&#39; 
+
+</code></pre><h3 id="在指定的位置添加新的一列"><a href="#在指定的位置添加新的一列" class="headerlink" title="在指定的位置添加新的一列"></a>在指定的位置添加新的一列</h3><pre><code>
+ALTER TABLE `tbname`
+
+ADD COLUMN `state` TINYINT(2) NOT NULL DEFAULT &#39;0&#39; COMMENT &#39;0为添加1为编辑&#39; AFTER `column_name`;
+
+</code></pre><h3 id="在第一列添加新的一列"><a href="#在第一列添加新的一列" class="headerlink" title="在第一列添加新的一列"></a>在第一列添加新的一列</h3><pre><code>
+ALTER TABLE `tbname`
+
+ ADD COLUMN `state` TINYINT(2) NOT NULL DEFAULT &#39;0&#39; COMMENT &#39;0为添加1为编辑&#39; FIRST;
+
+</code></pre>
             </div>
+            <hr>
+            <div>
+              <p>
+                
+                  <span>
+                <i class="iconfont icon-inbox"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/技术博客/">技术博客</a>
+                      &nbsp;
+                    
+                  </span>&nbsp;&nbsp;
+                
+                
+                  <span>
+                <i class="iconfont icon-tag"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/mysql/">mysql</a>
+                    
+                  </span>
+                
+              </p>
+              
+            </div>
+
+            
           </div>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc-start"></div>
+<div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
   </main>
 
@@ -260,6 +292,57 @@
 
 
 
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var post = $('#post');
+      var toc = $('#toc');
+      var tocLimMax = post.offset().top + post.height() - navHeight;
+
+      $(window).scroll(function () {
+        var tocLimMin = $('#toc-start').offset().top - navHeight;
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': navHeight,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+      var offset = $('#board-ctn').css('margin-right')
+      $('#toc-ctn').css({
+        'right': offset
+      })
+    });
+  </script>
+
+
+
 
 
 
@@ -286,7 +369,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "MySql常用命令&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

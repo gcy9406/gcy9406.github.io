@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content>
+  <meta name="author" content="Xavier">
+  <meta name="keywords" content>
+  <title>RxJava2教程 - 猫窝</title>
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css">
+
+
+<!-- 自定义样式保持在最底部 -->
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>猫窝</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('http://www.hhhub.cn:8000/f/8cc6359841/?raw=1') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  星期三, 七月 15日 2020, 1:30 下午
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    5.9k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta">
+                      <i class="far fa-clock"></i>
+                      28 分钟
+                  </span>
+                
+
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <div class="markdown-body">
+              <h1 id="RxJava2教程"><a href="#RxJava2教程" class="headerlink" title="RxJava2教程"></a>RxJava2教程</h1><a id="more"></a>
+<blockquote>
+<p><a href="https://juejin.im/post/5d983726f265da5b7a753cb7" target="_blank" rel="noopener">https://juejin.im/post/5d983726f265da5b7a753cb7</a></p>
+</blockquote>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在很久之前就一直想整理一下rxjava，但是一直没有时间，最近是因为离职了，总算有时间整理一下了。因为打算每篇博客都记录一个框架。所以为了描述清楚，本篇博客可能略长（包含rxjava的简介，使用，背压，原理等），希望你们能认真的读完，收获肯定还是有的，也会采用大量的图来介绍，这样可以加深理解。也可以当一个工具博客，需要的使用的话随时查阅。</p>
+<p>后续还会继续出背压和原理篇，敬请期待</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>什么是rxjava？ 是一种事件驱动的基于异步数据流的编程模式，整个数据流就像一条河流，它可以被观测（监听），过滤，操控或者与其他数据流合并为一条新的数据流。</p>
+<p>三要素</p>
+<ol>
+<li><p>被观察者（Observable）</p>
+</li>
+<li><p>观察者（Observer）</p>
+</li>
+<li><p>订阅（subscribe）</p>
+</li>
+</ol>
+<p>好了，因为秉持着要有图的思想，在介绍rxjava各个操作符的时候，会采用大量的图示来表示，图示来源于官方，这里先给大家介绍一下怎么看。<br>ok，进入到撸码环节</p>
+<h1 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h1><h2 id="首先要在-build-gradle-文件中添加依赖"><a href="#首先要在-build-gradle-文件中添加依赖" class="headerlink" title="首先要在 build.gradle 文件中添加依赖"></a>首先要在 build.gradle 文件中添加依赖</h2><pre><code>
+implementation &#39;io.reactivex.rxjava2:rxjava:2.1.4&#39;
+implementation &#39;io.reactivex.rxjava2:rxandroid:2.0.2&#39;
+</code></pre><h2 id="依赖搭建完毕了，我们先写个最简单的案例，一共3步走"><a href="#依赖搭建完毕了，我们先写个最简单的案例，一共3步走" class="headerlink" title="依赖搭建完毕了，我们先写个最简单的案例，一共3步走"></a>依赖搭建完毕了，我们先写个最简单的案例，一共3步走</h2><h3 id="创建被观察者"><a href="#创建被观察者" class="headerlink" title="创建被观察者"></a>创建被观察者</h3><pre><code>
+   // 创建被观察者
+   Observable.create(new ObservableOnSubscribe&lt;String&gt;() {
+
+       @Override
+       public void subscribe(ObservableEmitter&lt;String&gt; emitter) throws Exception {
+
+            emitter.onNext(&quot;你好呀&quot;);
+            emitter.onNext(&quot;我爱中国&quot;);
+            emitter.onNext(&quot;祝愿祖国繁荣富强&quot;);
+            emitter.onComplete();
+        }
+   });
+</code></pre><h3 id="创建观察者"><a href="#创建观察者" class="headerlink" title="创建观察者"></a>创建观察者</h3><pre><code>   // 创建观察者
+   Observer observer = new Observer&lt;String&gt;(){
+
+       @Override
+       public void onSubscribe(Disposable d) {
+
+           Log.i(&quot;lybj&quot;, &quot;准备监听&quot;);
+       }
+
+       @Override
+       public void onNext(String s) {
+
+           Log.i(&quot;lybj&quot;, s);
+       }
+
+       @Override
+       public void onError(Throwable e) {
+
+           Log.i(&quot;lybj&quot;, &quot;error&quot;);
+       }
+
+       @Override
+       public void onComplete() {
+
+           Log.i(&quot;lybj&quot;, &quot;监听完毕&quot;);
+       }
+   };
+</code></pre><h3 id="订阅（也就是将被观察者和观察者关联）"><a href="#订阅（也就是将被观察者和观察者关联）" class="headerlink" title="订阅（也就是将被观察者和观察者关联）"></a>订阅（也就是将被观察者和观察者关联）</h3><pre><code>   // 订阅
+   observable.subscribe(observer);
+</code></pre><p>这就完事了，看下结果</p>
+<p>是不是很简单，几个概念再介绍一下</p>
+<p>onNext()：当被观察者(observable)通过调用onNext()发射数据的时候，观察者(observer)调用onNext()接收数据<br>onError()：当被观察者(observable)调用该函数时，观察者(observer)调用onError()，其他事件将不会继续发送<br>onComplete()：当被观察者(observable)调用该函数时，观察者(observer)调用onComplete()，其他事件将不会继续发送<br>其实rxjava，打个比方，就类似花洒的头，数据流就类似水流，它的被观察者（observable）的各种操作符就是花洒的那个头，可以有各种模式，比如中间喷水的，周围喷水的，喷水雾的等等。根据操作符的不同，可以改变数据的各种样式，根据花洒头的不同，可以把水流改成各种样式。 接下来，就来学习下observable的丰富的操作符。</p>
+<h1 id="创建操作符"><a href="#创建操作符" class="headerlink" title="创建操作符"></a>创建操作符</h1><h2 id="create"><a href="#create" class="headerlink" title="create()"></a>create()</h2><h3 id="做啥的？"><a href="#做啥的？" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>创建被观察者对象</p>
+<h3 id="如何用"><a href="#如何用" class="headerlink" title="如何用?"></a>如何用?</h3><pre><code>// 创建被观察者
+Observable.create(new ObservableOnSubscribe&lt;String&gt;() {
+
+            @Override
+            public void subscribe(ObservableEmitter&lt;String&gt; emitter) throws Exception {
+
+                emitter.onNext(&quot;你好呀&quot;);
+                emitter.onNext(&quot;我爱中国&quot;);
+                emitter.onNext(&quot;祝愿祖国繁荣富强&quot;);
+                emitter.onComplete();
+            }
+        }).subscribe(new Observer&lt;String&gt;(){ // 关联观察者
+
+            @Override
+            public void onSubscribe(Disposable d) {
+
+                Log.i(&quot;lybj&quot;, &quot;准备监听&quot;);
+            }
+
+            @Override
+            public void onNext(String s) {
+
+                Log.i(&quot;lybj&quot;, s);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+                Log.i(&quot;lybj&quot;, &quot;error&quot;);
+            }
+
+            @Override
+            public void onComplete() {
+
+                Log.i(&quot;lybj&quot;, &quot;监听完毕&quot;);
+            }
+        });
+</code></pre><h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>可以直接链式调用关联观察者</p>
+<h2 id="just"><a href="#just" class="headerlink" title="just()"></a>just()</h2><h3 id="做啥的？-1"><a href="#做啥的？-1" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>通过上面的图，应该很形象的说明了，主要作用就是创建一个被观察者，并发送事件，但是发送的事件不可以超过10个以上。</p>
+<h3 id="如何用-1"><a href="#如何用-1" class="headerlink" title="如何用?"></a>如何用?</h3><pre><code>Observable.just(&quot;小明&quot;, &quot;小红&quot;, &quot;小兰&quot;).subscribe(new Observer&lt;String&gt;() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+                Log.i(&quot;lybj&quot;, &quot;准备监听&quot;);
+            }
+
+            @Override
+            public void onNext(String s) {
+
+                Log.i(&quot;lybj&quot;, s+&quot;来了&quot;);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+                Log.i(&quot;lybj&quot;, &quot;Error&quot;);
+            }
+
+            @Override
+            public void onComplete() {
+
+                Log.i(&quot;lybj&quot;, &quot;完毕&quot;);
+            }
+        });
+</code></pre><h3 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h3><h2 id="timer"><a href="#timer" class="headerlink" title="timer()"></a>timer()</h2><h3 id="做啥的？-2"><a href="#做啥的？-2" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>当到指定时间后就会发送一个 0 的值给观察者。 在项目中，可以做一些延时的处理，类似于Handler中的延时</p>
+<h3 id="如何用-2"><a href="#如何用-2" class="headerlink" title="如何用?"></a>如何用?</h3><pre><code>Observable.timer(2, TimeUnit.SECONDS).subscribe(new Consumer&lt;Long&gt;() {
+
+        @Override
+        public void accept(Long aLong) throws Exception {
+
+             Log.i(&quot;lybj&quot;, aLong+&quot;&quot;);
+        }
+});
+</code></pre><h3 id="结果-2"><a href="#结果-2" class="headerlink" title="结果"></a>结果</h3><p>延迟2秒后，将结果发送给观察者，Consumer和Observer是创建观察者的两种写法，相当于观察者中的onNext方法。</p>
+<h2 id="interval"><a href="#interval" class="headerlink" title="interval()"></a>interval()</h2><h3 id="做啥的？-3"><a href="#做啥的？-3" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>每隔一段时间就会发送一个事件，这个事件是从0开始，不断增1的数字。 类似于项目中的timer，做计时器</p>
+<h3 id="如何用-3"><a href="#如何用-3" class="headerlink" title="如何用?"></a>如何用?</h3><pre><code>Observable.interval(3,TimeUnit.SECONDS).subscribe(new Consumer&lt;Long&gt;() {
+
+     @Override
+     public void accept(Long aLong) throws Exception {
+
+          Log.i(&quot;lybj&quot;, aLong+&quot;&quot;);
+     }
+});
+</code></pre><h3 id="结果-3"><a href="#结果-3" class="headerlink" title="结果"></a>结果</h3><h2 id="intervalRange"><a href="#intervalRange" class="headerlink" title="intervalRange()"></a>intervalRange()</h2><h3 id="做啥的？-4"><a href="#做啥的？-4" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>可以指定发送事件的开始值和数量，其他与 interval() 的功能一样。</p>
+<h3 id="如何用-4"><a href="#如何用-4" class="headerlink" title="如何用?"></a>如何用?</h3><pre><code>Observable.intervalRange(100, 4, 0, 10, TimeUnit.SECONDS).subscribe(new Consumer&lt;Long&gt;() {
+
+      @Override
+      public void accept(Long aLong) throws Exception {
+
+           Log.i(&quot;lybj&quot;, aLong+&quot;&quot;);
+      }
+});
+</code></pre><h3 id="结果-4"><a href="#结果-4" class="headerlink" title="结果"></a>结果</h3><p>参数依次是：开始值，循环执行的次数，初始延迟时间，执行间隔时间，时间单位</p>
+<h2 id="range"><a href="#range" class="headerlink" title="range()"></a>range()</h2><h3 id="做啥的？-5"><a href="#做啥的？-5" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>同时发送一定范围的事件序列。</p>
+<h3 id="如何用-5"><a href="#如何用-5" class="headerlink" title="如何用?"></a>如何用?</h3><pre><code>Observable.range(0,10).subscribe(new Consumer&lt;Integer&gt;() {
+
+    @Override
+    public void accept(Integer integer) throws Exception {
+
+         Log.i(&quot;lybj&quot;, integer+&quot;&quot;);
+    }
+});
+</code></pre><h3 id="结果-5"><a href="#结果-5" class="headerlink" title="结果"></a>结果</h3><h2 id="rangeLong"><a href="#rangeLong" class="headerlink" title="rangeLong()"></a>rangeLong()</h2><h3 id="做啥的？-6"><a href="#做啥的？-6" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>作用与 range() 一样，只是数据类型为 Long</p>
+<h3 id="如何用-6"><a href="#如何用-6" class="headerlink" title="如何用?"></a>如何用?</h3><pre><code>Observable.rangeLong(0,10).subscribe(new Consumer&lt;Long&gt;() {
+
+    @Override
+    public void accept(Long aLong) throws Exception {
+
+         Log.i(&quot;lybj&quot;, aLong+&quot;&quot;);
+    }
+});
+</code></pre><h3 id="结果-6"><a href="#结果-6" class="headerlink" title="结果"></a>结果</h3><h2 id="empty-amp-never-amp-error"><a href="#empty-amp-never-amp-error" class="headerlink" title="empty() &amp; never() &amp; error()"></a>empty() &amp; never() &amp; error()</h2><h3 id="做啥的？-7"><a href="#做啥的？-7" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>never()：不发送任何事件<br>error()：发送 onError() 事件<br>empty() ： 直接发送 onComplete() 事件</p>
+<h3 id="如何用-7"><a href="#如何用-7" class="headerlink" title="如何用?"></a>如何用?</h3><pre><code> private void  empty_never_error(){
+
+        Observable.empty().subscribe(new Observer(){
+            @Override
+            public void onSubscribe(Disposable d) {
+
+                Log.i(&quot;lybj&quot;, &quot;准备监听&quot;);
+            }
+
+            @Override
+            public void onNext(Object o) {
+
+                Log.i(&quot;lybj&quot;, o+&quot;&quot;);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+                Log.i(&quot;lybj&quot;, &quot;onError&quot;);
+            }
+
+            @Override
+            public void onComplete() {
+
+                Log.i(&quot;lybj&quot;, &quot;onComplete&quot;);
+            }
+        });
+</code></pre><h3 id="结果-7"><a href="#结果-7" class="headerlink" title="结果"></a>结果</h3><p>如果是empty() 则：</p>
+<p>如果是error() 则：</p>
+<p>如果是never()则：</p>
+<h1 id="转换操作符"><a href="#转换操作符" class="headerlink" title="转换操作符"></a>转换操作符</h1><h2 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h2><h3 id="做啥的？-8"><a href="#做啥的？-8" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>map 可以将被观察者发送的数据类型转变成其他的类型</p>
+<h3 id="怎么用？"><a href="#怎么用？" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.just(&quot;中国&quot;, &quot;祖国&quot;, &quot;中国军人&quot;)
+                .map(new Function&lt;String, String&gt;() {
+
+                    @Override
+                    public String apply(String s) throws Exception {
+
+                        return &quot;我爱&quot; + s;
+                    }
+                })
+                .subscribe(new Consumer&lt;String&gt;() {
+
+                    @Override
+                    public void accept(String s) throws Exception {
+
+                        Log.i(&quot;lybj&quot;, s);
+                    }
+                });
+</code></pre><h3 id="结果-8"><a href="#结果-8" class="headerlink" title="结果"></a>结果</h3><p>简单来讲，就是可以对发射过来的数据进行再加工，再传给观察者</p>
+<h2 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap()"></a>flatMap()</h2><h3 id="做啥的？-9"><a href="#做啥的？-9" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>这个方法可以将事件序列中的元素进行整合加工，返回一个新的被观察者。 flatMap() 其实与 map() 类似，但是 flatMap() 返回的是一个 Observerable，map()只是返回数据，如果在元素再加工的时候，想再使用上面的创建操作符的话，建议使用flatMap()，而非map()。</p>
+<h3 id="怎么用？-1"><a href="#怎么用？-1" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code> Observable.just(&quot;中国&quot;, &quot;祖国&quot;, &quot;中国军人&quot;, &quot;贪官&quot;)
+                .flatMap(new Function&lt;String, ObservableSource&lt;String&gt;&gt;() {
+
+                    @Override
+                    public ObservableSource&lt;String&gt; apply(String s) throws Exception {
+
+                        if(s.equals(&quot;贪官&quot;)){
+
+                            return Observable.error(new Exception(&quot;贪官不能被喜欢&quot;));
+                        }
+                        return Observable.just(&quot;我爱&quot;+s);
+                    }
+                })
+                .subscribe(new Consumer&lt;String&gt;() {
+
+                    @Override
+                    public void accept(String s) throws Exception {
+
+                        Log.i(&quot;lybj&quot;, s);
+                    }
+                }, new Consumer&lt;Throwable&gt;() {
+
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+
+                        Log.i(&quot;lybj&quot;, throwable.getMessage());
+                    }
+                });
+</code></pre><h3 id="结果-9"><a href="#结果-9" class="headerlink" title="结果"></a>结果</h3><p>new Consumer方法监听的是Observable.error()</p>
+<h2 id="concatMap"><a href="#concatMap" class="headerlink" title="concatMap()"></a>concatMap()</h2><h3 id="做啥的？-10"><a href="#做啥的？-10" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>concatMap() 和 flatMap() 基本上是一样的，只不过 concatMap() 转发出来的事件是有序的，而 flatMap() 是无序的。</p>
+<h3 id="怎么用？-2"><a href="#怎么用？-2" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.just(&quot;中国&quot;, &quot;祖国&quot;, &quot;中国军人&quot;, &quot;贪官&quot;)
+                .concatMap(new Function&lt;String, ObservableSource&lt;String&gt;&gt;() {
+
+                    @Override
+                    public ObservableSource&lt;String&gt; apply(String s) throws Exception {
+
+                        if(s.equals(&quot;贪官&quot;)){
+
+                            return Observable.error(new Exception(&quot;贪官不能被喜欢&quot;));
+                        }
+                        return Observable.just(&quot;我爱&quot;+s);
+                    }
+                })
+                .subscribe(new Consumer&lt;String&gt;() {
+
+                    @Override
+                    public void accept(String s) throws Exception {
+
+                        Log.i(&quot;lybj&quot;, s);
+                    }
+                }, new Consumer&lt;Throwable&gt;() {
+
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+
+                        Log.i(&quot;lybj&quot;, throwable.getMessage());
+                    }
+                });
+</code></pre><h3 id="结果-10"><a href="#结果-10" class="headerlink" title="结果"></a>结果</h3><h2 id="buffer"><a href="#buffer" class="headerlink" title="buffer()"></a>buffer()</h2><h3 id="做啥的？-11"><a href="#做啥的？-11" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>从需要发送的事件当中获取一定数量的事件，并将这些事件放到缓冲区当中一并发出。</p>
+<h3 id="怎么用？-3"><a href="#怎么用？-3" class="headerlink" title="怎么用？"></a>怎么用？</h3><p>buffer 有两个参数，一个是 count，另一个 skip。count 缓冲区元素的数量，skip 就代表缓冲区满了之后，发送下一次事件序列的时候要跳过多少元素。</p>
+<pre><code>
+Observable.just(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;)
+                .buffer(2,1)
+                .subscribe(new Consumer&lt;List&lt;String&gt;&gt;() {
+
+                    @Override
+                    public void accept(List&lt;String&gt; strings) throws Exception {
+
+                        Log.d(&quot;lybj&quot;, &quot;缓冲区大小： &quot; + strings.size());
+                        for (String s : strings){
+                            Log.d(&quot;lybj&quot;,  s);
+                        }
+                    }
+                });
+</code></pre><h3 id="结果-11"><a href="#结果-11" class="headerlink" title="结果"></a>结果</h3><h2 id="scan"><a href="#scan" class="headerlink" title="scan()"></a>scan()</h2><h3 id="做啥的？-12"><a href="#做啥的？-12" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>将发射的数据通过一个函数进行变换，然后将变换后的结果作为参数跟下一个发射的数据一起继续通过那个函数变换，这样依次连续发射得到最终结果。</p>
+<h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><pre><code>Observable.just(1, 2, 3, 4, 5)
+                .scan(new BiFunction&lt;Integer, Integer, Integer&gt;() {
+
+                    @Override
+                    public Integer apply(Integer integer, Integer integer2) throws Exception {
+
+                        Log.i(&quot;lybj&quot;, &quot;integer01: &quot; + integer + &quot; integer02: &quot;+ integer2);
+                        return integer + integer2;
+                    }
+                }).subscribe(new Consumer&lt;Integer&gt;() {
+
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+
+                        Log.i(&quot;lybj&quot;, &quot;accept: &quot; + integer);
+                    }
+                });
+</code></pre><h3 id="结果-12"><a href="#结果-12" class="headerlink" title="结果"></a>结果</h3><p>简单来说，先将第一个元素返回给观察者，然后将1，2的和返给观察者，然后将上一次计算的和，当第一个元素，也就是3，第2个元素，是一直按顺序取值，取第3个元素也就是3，那么将，3+3 =6，返回给观察者，以此类推，将6作为第一个元素，第二个元素取值4，将6+4=10返回给观察者。</p>
+<p>sacn操作符是遍历源Observable产生的结果，再按照自定义规则进行运算，依次输出每次计算后的结果给订阅者</p>
+<h2 id="window"><a href="#window" class="headerlink" title="window()"></a>window()</h2><h3 id="做啥的？-13"><a href="#做啥的？-13" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>发送事件时，将这些事件分为按数量重新分组。window 中的 count 的参数就是代表指定的数量，例如将 count 指定为2，那么每发2个数据就会将这2个数据分成一组。</p>
+<p>window与buffer区别：window是把数据分割成了Observable，buffer是把数据分割成List</p>
+<h3 id="如何用？"><a href="#如何用？" class="headerlink" title="如何用？"></a>如何用？</h3><pre><code>Observable.just(&quot;鲁班&quot;, &quot;孙尚香&quot;, &quot;亚索&quot;,&quot;火女&quot;,&quot;盖伦&quot;)
+                .window(2)
+                .subscribe(new Consumer&lt;Observable&lt;String&gt;&gt;() {
+
+                    @Override
+                    public void accept(Observable&lt;String&gt; stringObservable) throws Exception {
+
+                        Log.i(&quot;lybj&quot;, &quot;分组开始&quot;);
+                        stringObservable.subscribe(new Consumer&lt;String&gt;() {
+
+                            @Override
+                            public void accept(String s) throws Exception {
+
+                                Log.i(&quot;lybj&quot;, s);
+                            }
+                        });
+                    }
+                });
+</code></pre><h3 id="结果-13"><a href="#结果-13" class="headerlink" title="结果"></a>结果</h3><h1 id="组合操作符"><a href="#组合操作符" class="headerlink" title="组合操作符"></a>组合操作符</h1><h2 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h2><h3 id="做啥的？-14"><a href="#做啥的？-14" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>可以将多个观察者组合在一起，然后按照之前发送顺序发送事件。需要注意的是，concat() 最多只可以发送4个事件。</p>
+<h3 id="怎么用？-4"><a href="#怎么用？-4" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>  private void concat(){
+
+        Observable.concat(
+                Observable.just(1, 2, 3),
+                Observable.just(4, 5),
+                Observable.just(6, 7),
+                Observable.just(8, 9))
+                .subscribe(new Consumer&lt;Integer&gt;() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+
+                        Log.i(&quot;lybj&quot;, integer+&quot;&quot;);
+                    }
+                });
+    }
+</code></pre><h3 id="结果-14"><a href="#结果-14" class="headerlink" title="结果"></a>结果</h3><h2 id="concatArray"><a href="#concatArray" class="headerlink" title="concatArray()"></a>concatArray()</h2><h3 id="做啥的？-15"><a href="#做啥的？-15" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>与 concat() 作用一样，不过 concatArray() 可以发送多于 4 个被观察者。</p>
+<h3 id="怎么用？-5"><a href="#怎么用？-5" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.concatArray(Observable.just(1, 2, 3, 4),
+                Observable.just(5, 6),
+                Observable.just(7, 8, 9, 10),
+                Observable.just(11, 12, 13),
+                Observable.just(14, 15),
+                Observable.just(16))
+                .subscribe(new Consumer&lt;Integer&gt;() {
+            @Override
+            public void accept(Integer integer) throws Exception {
+
+                Log.i(&quot;lybj&quot;, integer+&quot;&quot;);
+            }
+        });
+</code></pre><h3 id="结果-15"><a href="#结果-15" class="headerlink" title="结果"></a>结果</h3><h2 id="merge"><a href="#merge" class="headerlink" title="merge()"></a>merge()</h2><h3 id="做啥的？-16"><a href="#做啥的？-16" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>这个方法与 concat() 作用基本一样，但是 concat() 是串行发送事件，而 merge() 并行发送事件，也是只能发送4个。</p>
+<h3 id="怎么用？-6"><a href="#怎么用？-6" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.merge(Observable.just(1, 2, 3, 4),
+                Observable.just(5, 6),
+                Observable.just(7, 8, 9, 10),
+                Observable.just(11, 12, 13))
+                .subscribe(new Consumer&lt;Integer&gt;() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+
+                        Log.i(&quot;lybj&quot;, integer+&quot;&quot;);
+                    }
+                });
+</code></pre><h3 id="结果-16"><a href="#结果-16" class="headerlink" title="结果"></a>结果</h3><h2 id="zip"><a href="#zip" class="headerlink" title="zip()"></a>zip()</h2><h3 id="做啥的？-17"><a href="#做啥的？-17" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>zip操作符用于将多个数据源合并，并生成一个新的数据源。新生成的数据源严格按照合并前的数据源的数据发射顺序，并且新数据源的数据个数等于合并前发射数据个数最少的那个数据源的数据个数。</p>
+<h3 id="怎么用？-7"><a href="#怎么用？-7" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.zip(Observable.just(1, 2, 3),
+                Observable.just(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;),
+                new BiFunction&lt;Integer, String, String&gt;(){
+
+                    @Override
+                    public String apply(Integer o1, String o2) throws Exception {
+
+                        return o1 +&quot;_&quot;+ o2;
+                    }
+                })
+                .subscribe(new Consumer&lt;String&gt;() {
+                    @Override
+                    public void accept(String o) throws Exception {
+
+                        Log.i(&quot;lybj&quot;, o);
+                    }
+                });
+</code></pre><h3 id="结果-17"><a href="#结果-17" class="headerlink" title="结果"></a>结果</h3><h2 id="startWith-amp-startWithArray"><a href="#startWith-amp-startWithArray" class="headerlink" title="startWith() &amp; startWithArray()"></a>startWith() &amp; startWithArray()</h2><h3 id="做啥的？-18"><a href="#做啥的？-18" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>在发送事件之前追加事件，startWith() 追加一个事件，startWithArray() 可以追加多个事件。追加的事件会先发出。 </p>
+<h3 id="怎么用？-8"><a href="#怎么用？-8" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.just(1, 2, 3)
+               .startWithArray(4, 5)
+               .subscribe(new Consumer&lt;Integer&gt;() {
+
+                   @Override
+                   public void accept(Integer integer) throws Exception {
+
+                       Log.i(&quot;lybj&quot;, integer+&quot;&quot;);
+                   }
+               });
+</code></pre><h3 id="结果-18"><a href="#结果-18" class="headerlink" title="结果"></a>结果</h3><h2 id="count"><a href="#count" class="headerlink" title="count()"></a>count()</h2><h3 id="做啥的？-19"><a href="#做啥的？-19" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>返回被观察者发送事件的数量。</p>
+<h3 id="怎么用？-9"><a href="#怎么用？-9" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.just(2, 3, 4, 5, 6)
+                .count()
+                .subscribe(new Consumer&lt;Long&gt;() {
+
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+
+                        Log.i(&quot;lybj&quot;, &quot;事件数量：&quot; + aLong);
+                    }
+                });
+</code></pre><h3 id="结果-19"><a href="#结果-19" class="headerlink" title="结果"></a>结果</h3><h1 id="功能操作符"><a href="#功能操作符" class="headerlink" title="功能操作符"></a>功能操作符</h1><h2 id="delay"><a href="#delay" class="headerlink" title="delay()"></a>delay()</h2><h3 id="做啥的？-20"><a href="#做啥的？-20" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>延迟一段事件发送事件。</p>
+<h3 id="怎么用？-10"><a href="#怎么用？-10" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.just(1,2,3,4)
+                .delay(3, TimeUnit.SECONDS)
+                .subscribe(new Consumer&lt;Integer&gt;() {
+
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+
+                        Log.i(&quot;lybj&quot;,  integer+&quot;&quot;);
+                    }
+                });
+</code></pre><h3 id="结果-20"><a href="#结果-20" class="headerlink" title="结果"></a>结果</h3><h2 id="周期函数"><a href="#周期函数" class="headerlink" title="周期函数"></a>周期函数</h2><h3 id="做啥的？-21"><a href="#做啥的？-21" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>doOnEach(): 每次发送事件之前都会回调这个方法</p>
+<p>doOnNext(): Observable 每发送 onNext() 之前都会先回调这个方法。</p>
+<p>doAfterNext(): Observable 每发送 onNext() 之后都会回调这个方法。</p>
+<p>doOnComplete(): Observable 每发送 onComplete() 之前都会回调这个方法。</p>
+<p>doOnError(): Observable 每发送 onError() 之前都会回调这个方法。</p>
+<p>doOnSubscribe(): Observable 每发送 onSubscribe()之前都会回调这个方法。</p>
+<p>doOnDispose(): 当调用 Disposable 的 dispose() 之后回调该方法。</p>
+<p>doOnTerminate(): 在 onError 或者 onComplete 发送之前回调。</p>
+<p>doAfterTerminate(): onError 或者 onComplete 发送之后回调。</p>
+<p>doFinally(): 在所有事件发送完毕之后回调该方法。如果取消订阅之后doAfterTerminate()就不会被回调，而doFinally()无论怎么样都会被回调，且都会在事件序列的最后。</p>
+<h3 id="怎么用？-11"><a href="#怎么用？-11" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() {
+
+            @Override
+            public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception {
+
+                emitter.onNext(1);
+                emitter.onNext(2);
+                emitter.onNext(3);
+                emitter.onComplete();
+            }
+        }).doOnEach(new Consumer&lt;Notification&lt;Integer&gt;&gt;() {
+
+            @Override
+            public void accept(Notification&lt;Integer&gt; integerNotification) throws Exception {
+
+                Log.i(&quot;lybj&quot;,  &quot;doOnEach 方法执行了, 结果：&quot;+ integerNotification.getValue());
+            }
+        }).doOnNext(new Consumer&lt;Integer&gt;() {
+
+            @Override
+            public void accept(Integer integer) throws Exception {
+
+                Log.i(&quot;lybj&quot;,  &quot;doOnNext 方法执行了, 结果：&quot;+ integer);
+            }
+        }).doAfterNext(new Consumer&lt;Integer&gt;() {
+
+            @Override
+            public void accept(Integer integer) throws Exception {
+
+                Log.i(&quot;lybj&quot;,  &quot;doAfterNext 方法执行了, 结果：&quot;+ integer);
+            }
+        }).doOnComplete(new Action() {
+
+            @Override
+            public void run() throws Exception {
+
+                Log.i(&quot;lybj&quot;,  &quot;doOnComplete 方法执行了&quot;);
+            }
+        }).doOnError(new Consumer&lt;Throwable&gt;() {
+
+            @Override
+            public void accept(Throwable throwable) throws Exception {
+
+                Log.i(&quot;lybj&quot;,  &quot;doOnError 方法执行了&quot;);
+            }
+        }).doOnSubscribe(new Consumer&lt;Disposable&gt;() {
+
+            @Override
+            public void accept(Disposable disposable) throws Exception {
+
+                Log.i(&quot;lybj&quot;,  &quot;doOnSubscribe 方法执行了&quot;);
+            }
+        }).doOnDispose(new Action() {
+
+            @Override
+            public void run() throws Exception {
+
+                Log.i(&quot;lybj&quot;,  &quot;doOnDispose 方法执行了&quot;);
+            }
+        }).doOnTerminate(new Action() {
+
+            @Override
+            public void run() throws Exception {
+
+                Log.i(&quot;lybj&quot;,  &quot;doOnTerminate 方法执行了&quot;);
+            }
+        }).doAfterTerminate(new Action() {
+
+            @Override
+            public void run() throws Exception {
+
+                Log.i(&quot;lybj&quot;,  &quot;doAfterTerminate 方法执行了&quot;);
+            }
+        }).doFinally(new Action() {
+
+            @Override
+            public void run() throws Exception {
+
+                Log.i(&quot;lybj&quot;,  &quot;doFinally 方法执行了&quot;);
+            }
+        }).subscribe(new Observer&lt;Integer&gt;() {
+
+            private Disposable disposable;
+
+            @Override
+            public void onSubscribe(Disposable d) {
+
+                disposable = d;
+                Log.i(&quot;lybj&quot;, &quot;------观察者onSubscribe()执行&quot;);
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+
+                Log.i(&quot;lybj&quot;, &quot;------观察者onNext()执行：&quot;+integer);
+                if(integer == 2){
+//                    disposable.dispose(); // 取消订阅
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+                Log.i(&quot;lybj&quot;, &quot;------观察者onError()执行&quot;);
+            }
+
+            @Override
+            public void onComplete() {
+
+                Log.i(&quot;lybj&quot;, &quot;------观察者onComplete()执行&quot;);
+            }
+        });
+</code></pre><h3 id="结果-21"><a href="#结果-21" class="headerlink" title="结果"></a>结果</h3><h2 id="onErrorReturn"><a href="#onErrorReturn" class="headerlink" title="onErrorReturn()"></a>onErrorReturn()</h2><h3 id="做啥的？-22"><a href="#做啥的？-22" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>当接受到一个 onError() 事件之后回调，返回的值会回调 onNext() 方法，并正常结束该事件序列。</p>
+<h3 id="怎么用？-12"><a href="#怎么用？-12" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.create(new ObservableOnSubscribe&lt;String&gt;() {
+
+            @Override
+            public void subscribe(ObservableEmitter&lt;String&gt; emitter) throws Exception {
+
+                emitter.onNext(&quot;小明：到&quot;);
+                emitter.onError(new IllegalStateException(&quot;error&quot;));
+                emitter.onNext(&quot;小方：到&quot;);
+            }
+        }).onErrorReturn(new Function&lt;Throwable, String&gt;() {
+
+            @Override
+            public String apply(Throwable throwable) throws Exception {
+
+                Log.i(&quot;lybj&quot;,  &quot;小红请假了&quot;);
+                return &quot;小李：到&quot;;
+            }
+        }).subscribe(new Observer&lt;String&gt;() {
+
+            @Override
+            public void onSubscribe(Disposable d) {
+            }
+
+            @Override
+            public void onNext(String s) {
+
+                Log.i(&quot;lybj&quot;,  s);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+                Log.i(&quot;lybj&quot;,  e.getMessage());
+            }
+
+            @Override
+            public void onComplete() {
+            }
+        });
+</code></pre><h3 id="结果-22"><a href="#结果-22" class="headerlink" title="结果"></a>结果</h3><h2 id="onErrorResumeNext"><a href="#onErrorResumeNext" class="headerlink" title="onErrorResumeNext()"></a>onErrorResumeNext()</h2><h3 id="做啥的？-23"><a href="#做啥的？-23" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>当接收到 onError() 事件时，返回一个新的 Observable，并正常结束事件序列。</p>
+<h3 id="怎么用？-13"><a href="#怎么用？-13" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.create(new ObservableOnSubscribe&lt;String&gt;() {
+
+            @Override
+            public void subscribe(ObservableEmitter&lt;String&gt; emitter) throws Exception {
+
+                emitter.onNext(&quot;小明&quot;);
+                emitter.onNext(&quot;小方&quot;);
+                emitter.onNext(&quot;小红&quot;);
+                emitter.onError(new NullPointerException(&quot;error&quot;));
+            }
+        }).onErrorResumeNext(new Function&lt;Throwable, ObservableSource&lt;? extends String&gt;&gt;() {
+
+            @Override
+            public ObservableSource&lt;? extends String&gt; apply(Throwable throwable) throws Exception {
+
+                return Observable.just(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;);
+            }
+        }).subscribe(new Observer&lt;String&gt;() {
+
+            @Override
+            public void onSubscribe(Disposable d) {
+
+                Log.i(&quot;lybj&quot;,  &quot;准备监听&quot;);
+            }
+
+            @Override
+            public void onNext(String s) {
+
+                Log.i(&quot;lybj&quot;,  s);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+                Log.i(&quot;lybj&quot;,  e.getMessage());
+            }
+
+            @Override
+            public void onComplete() {
+                Log.i(&quot;lybj&quot;,  &quot;onComplete&quot;);
+            }
+        });
+</code></pre><h3 id="结果-23"><a href="#结果-23" class="headerlink" title="结果"></a>结果</h3><h2 id="onExceptionResumeNext"><a href="#onExceptionResumeNext" class="headerlink" title="onExceptionResumeNext()"></a>onExceptionResumeNext()</h2><h3 id="做啥的？-24"><a href="#做啥的？-24" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>与 onErrorResumeNext() 作用基本一致，但是这个方法只能捕捉 Exception。</p>
+<h3 id="怎么用？-14"><a href="#怎么用？-14" class="headerlink" title="怎么用？"></a>怎么用？</h3><p>Observable.create(new ObservableOnSubscribe<string>() {</string></p>
+<pre><code>        @Override
+        public void subscribe(ObservableEmitter&lt;String&gt; emitter) throws Exception {
+
+            emitter.onNext(&quot;小明&quot;);
+            emitter.onNext(&quot;小方&quot;);
+            emitter.onNext(&quot;小红&quot;);
+            emitter.onError(new Error(&quot;error&quot;));
+        }
+    }).onExceptionResumeNext(new Observable&lt;String&gt;() {
+
+        @Override
+        protected void subscribeActual(Observer observer) {
+
+            observer.onNext(&quot;小张&quot;);
+        }
+    }).subscribe(new Observer&lt;String&gt;() {
+
+        @Override
+        public void onSubscribe(Disposable d) {
+
+            Log.i(&quot;lybj&quot;,  &quot;准备监听&quot;);
+        }
+
+        @Override
+        public void onNext(String s) {
+
+            Log.i(&quot;lybj&quot;,  s);
+        }
+
+        @Override
+        public void onError(Throwable e) {
+
+            Log.i(&quot;lybj&quot;,  e.getMessage());
+        }
+
+        @Override
+        public void onComplete() {
+            Log.i(&quot;lybj&quot;,  &quot;onComplete&quot;);
+        }
+    });
+</code></pre><h3 id="结果-24"><a href="#结果-24" class="headerlink" title="结果"></a>结果</h3><h2 id="retry"><a href="#retry" class="headerlink" title="retry()"></a>retry()</h2><h3 id="做啥的？-25"><a href="#做啥的？-25" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>如果出现错误事件，则会重新发送所有事件序列。times 是代表重新发的次数。</p>
+<h3 id="怎么用？-15"><a href="#怎么用？-15" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.create(new ObservableOnSubscribe&lt;String&gt;() {
+
+            @Override
+            public void subscribe(ObservableEmitter&lt;String&gt; emitter) throws Exception {
+
+                emitter.onNext(&quot;1&quot;);
+                emitter.onNext(&quot;2&quot;);
+                emitter.onError(new IllegalStateException());
+            }
+        }).retry(2)
+          .subscribe(new Observer&lt;String&gt;() {
+
+              @Override
+              public void onSubscribe(Disposable d) {
+
+                  Log.i(&quot;lybj&quot;,  &quot;准备监听&quot;);
+              }
+
+              @Override
+              public void onNext(String s) {
+
+                  Log.i(&quot;lybj&quot;,  s);
+              }
+
+              @Override
+              public void onError(Throwable e) {
+
+                  Log.i(&quot;lybj&quot;,  e.getMessage());
+              }
+
+              @Override
+              public void onComplete() {
+                  Log.i(&quot;lybj&quot;,  &quot;onComplete&quot;);
+              }
+          });
+</code></pre><h3 id="结果-25"><a href="#结果-25" class="headerlink" title="结果"></a>结果</h3><h2 id="retryUntil"><a href="#retryUntil" class="headerlink" title="retryUntil()"></a>retryUntil()</h2><h3 id="做啥的？-26"><a href="#做啥的？-26" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>出现错误事件之后，可以通过此方法判断是否继续发送事件。</p>
+<h3 id="怎么用？-16"><a href="#怎么用？-16" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.create(new ObservableOnSubscribe&lt;String&gt;() {
+
+            public void subscribe(@NonNull ObservableEmitter&lt;String&gt; emitter){
+
+                emitter.onNext(&quot;1&quot;);
+                emitter.onNext(&quot;2&quot;);
+                emitter.onNext(&quot;3&quot;);
+                emitter.onError(new NullPointerException(&quot;error&quot;));
+                emitter.onNext(&quot;4&quot;);
+                emitter.onNext(&quot;5&quot;);
+            }
+        }).retryUntil(new BooleanSupplier() {
+            @Override
+            public boolean getAsBoolean() throws Exception {
+
+                Log.i(&quot;lybj&quot;,  &quot;getAsBoolean&quot;);
+                return true;
+            }
+        }).subscribe(new Observer&lt;String&gt;() {
+
+            @Override
+            public void onSubscribe(Disposable d) {
+            }
+
+            @Override
+            public void onNext(String s) {
+
+                Log.i(&quot;lybj&quot;,  s);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+            }
+
+            @Override
+            public void onComplete() {
+            }
+        });
+</code></pre><h3 id="结果-26"><a href="#结果-26" class="headerlink" title="结果"></a>结果</h3><h2 id="repeat"><a href="#repeat" class="headerlink" title="repeat()"></a>repeat()</h2><h3 id="做啥的？-27"><a href="#做啥的？-27" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>重复发送被观察者的事件，times 为发送次数。</p>
+<h3 id="怎么用？-17"><a href="#怎么用？-17" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.just(1,2,3)
+                .repeat(2)
+                .subscribe(new Consumer&lt;Integer&gt;() {
+
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+
+                        Log.i(&quot;lybj&quot;,  integer+&quot;&quot;);
+                    }
+                });
+</code></pre><h3 id="结果-27"><a href="#结果-27" class="headerlink" title="结果"></a>结果</h3><h2 id="subscribeOn-amp-observeOn"><a href="#subscribeOn-amp-observeOn" class="headerlink" title="subscribeOn() &amp; observeOn()"></a>subscribeOn() &amp; observeOn()</h2><h3 id="做啥的？-28"><a href="#做啥的？-28" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>subscribeOn(): 指定被观察者的线程，如果多次调用此方法，只有第一次有效。 observeOn(): 指定观察者的线程</p>
+<h3 id="怎么用？-18"><a href="#怎么用？-18" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.create(new ObservableOnSubscribe&lt;String&gt;() {
+
+            public void subscribe(@NonNull ObservableEmitter&lt;String&gt; emitter){
+
+                emitter.onNext(&quot;1&quot;);
+                Log.i(&quot;lybj&quot;,  Thread.currentThread().getName());
+            }
+        }).subscribeOn(Schedulers.io())
+          .observeOn(Schedulers.newThread())
+          .subscribe(new Consumer&lt;String&gt;() {
+
+               @Override
+               public void accept(String s) throws Exception {
+
+                   Log.i(&quot;lybj&quot;,  s);
+                   Log.i(&quot;lybj&quot;,  Thread.currentThread().getName());
+               }
+          });
+</code></pre><h3 id="结果-28"><a href="#结果-28" class="headerlink" title="结果"></a>结果</h3><h1 id="过滤操作符"><a href="#过滤操作符" class="headerlink" title="过滤操作符"></a>过滤操作符</h1><h2 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h2><h3 id="做啥的？-29"><a href="#做啥的？-29" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>如果返回 true 则会发送事件，否则不会发送</p>
+<h3 id="怎么用？-19"><a href="#怎么用？-19" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.just(1,2,3,4,5)
+          .filter(new Predicate&lt;Integer&gt;() {
+
+                    @Override
+                    public boolean test(Integer integer) throws Exception {
+
+                        if(integer &gt; 4){
+                            return true;
+                        }
+                        return false;
+                    }
+           }).subscribe(new Consumer&lt;Integer&gt;() {
+
+               @Override
+               public void accept(Integer integer) throws Exception {
+
+                   Log.i(&quot;lybj&quot;,  integer+&quot;&quot;);
+               }
+          });
+</code></pre><h3 id="结果-29"><a href="#结果-29" class="headerlink" title="结果"></a>结果</h3><h2 id="ofType"><a href="#ofType" class="headerlink" title="ofType()"></a>ofType()</h2><h3 id="做啥的？-30"><a href="#做啥的？-30" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>可以过滤不符合该类型事件</p>
+<h3 id="怎么用？-20"><a href="#怎么用？-20" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.just(1, 2, 3, &quot;小明&quot;, &quot;小方&quot;)
+                .ofType(String.class)
+                .subscribe(new Consumer&lt;String&gt;() {
+                    @Override
+                    public void accept(String s) throws Exception {
+
+                        Log.i(&quot;lybj&quot;,  s+&quot;&quot;);
+                    }
+                });
+</code></pre><h3 id="结果-30"><a href="#结果-30" class="headerlink" title="结果"></a>结果</h3><h2 id="skip"><a href="#skip" class="headerlink" title="skip()"></a>skip()</h2><h3 id="做啥的？-31"><a href="#做啥的？-31" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>跳过正序某些事件，count 代表跳过事件的数量</p>
+<h3 id="怎么用？-21"><a href="#怎么用？-21" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.just(1,2,3,4,5,6,7)
+                .skip(2)
+                .subscribe(new Consumer&lt;Integer&gt;() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+
+                        Log.i(&quot;lybj&quot;,  integer+&quot;&quot;);
+                    }
+                });
+</code></pre><h3 id="结果-31"><a href="#结果-31" class="headerlink" title="结果"></a>结果</h3><h2 id="distinct"><a href="#distinct" class="headerlink" title="distinct()"></a>distinct()</h2><h3 id="做啥的？-32"><a href="#做啥的？-32" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>过滤事件序列中的重复事件。</p>
+<h3 id="做啥的？-33"><a href="#做啥的？-33" class="headerlink" title="做啥的？"></a>做啥的？</h3><pre><code>Observable.just(1,2,3,1,4,1,2)
+                .distinct()
+                .subscribe(new Consumer&lt;Integer&gt;() {
+
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+
+                        Log.i(&quot;lybj&quot;,  integer+&quot;&quot;);
+                    }
+                });
+</code></pre><h3 id="结果-32"><a href="#结果-32" class="headerlink" title="结果"></a>结果</h3><h2 id="distinctUntilChanged"><a href="#distinctUntilChanged" class="headerlink" title="distinctUntilChanged()"></a>distinctUntilChanged()</h2><h3 id="做啥的？-34"><a href="#做啥的？-34" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>过滤掉连续重复的事件</p>
+<h3 id="做啥的？-35"><a href="#做啥的？-35" class="headerlink" title="做啥的？"></a>做啥的？</h3><pre><code>Observable.just(1,2,3,3,1,5,6)
+        .distinctUntilChanged()
+        .subscribe(new Consumer&lt;Integer&gt;() {
+            @Override
+            public void accept(Integer integer) throws Exception {
+
+                Log.i(&quot;lybj&quot;,  integer+&quot;&quot;);
+            }
+        });
+</code></pre><h3 id="结果-33"><a href="#结果-33" class="headerlink" title="结果"></a>结果</h3><h2 id="take"><a href="#take" class="headerlink" title="take()"></a>take()</h2><h3 id="做啥的？-36"><a href="#做啥的？-36" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>控制观察者接收的事件的数量。</p>
+<h3 id="怎么用？-22"><a href="#怎么用？-22" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code> Observable.just(1,2,3,4,5,6)
+                .take(3)
+                .subscribe(new Consumer&lt;Integer&gt;() {
+
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+
+                        Log.i(&quot;lybj&quot;,  integer+&quot;&quot;);
+                    }
+                });
+</code></pre><h3 id="结果-34"><a href="#结果-34" class="headerlink" title="结果"></a>结果</h3><h2 id="debounce"><a href="#debounce" class="headerlink" title="debounce()"></a>debounce()</h2><h3 id="做啥的？-37"><a href="#做啥的？-37" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>如果两件事件发送的时间间隔小于设定的时间间隔则前一件事件就不会发送给观察者。 简单来说就是防抖动，比如按钮控制快速点击等。</p>
+<h3 id="怎么用？-23"><a href="#怎么用？-23" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.just(1,2,3,4,5)
+                .map(new Function&lt;Integer, Integer&gt;() {
+
+                    @Override
+                    public Integer apply(Integer integer) throws Exception {
+
+                        Thread.sleep(900);
+                        return integer;
+                    }
+                })
+                .debounce(1,TimeUnit.SECONDS)
+                .subscribe(new Consumer&lt;Integer&gt;() {
+
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+
+                        Log.i(&quot;lybj&quot;,  integer+&quot;&quot;);
+                    }
+                });
+</code></pre><h3 id="结果-35"><a href="#结果-35" class="headerlink" title="结果"></a>结果</h3><h2 id="firstElement-amp-amp-lastElement-amp-amp-elementAt"><a href="#firstElement-amp-amp-lastElement-amp-amp-elementAt" class="headerlink" title="firstElement() &amp;&amp; lastElement() &amp;&amp; elementAt()"></a>firstElement() &amp;&amp; lastElement() &amp;&amp; elementAt()</h2><h3 id="做啥的？-38"><a href="#做啥的？-38" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>firstElement(): 取事件序列的第一个元素。</p>
+<p>lastElement(): 取事件序列的最后一个元素。</p>
+<p>elementAt(): 以指定取出事件序列中事件，但是输入的 index 超出事件序列的总数的话就不会出现任何结果。</p>
+<h3 id="怎么用？-24"><a href="#怎么用？-24" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.just(1,2,3,4)
+                .firstElement()
+                .subscribe(new Consumer&lt;Integer&gt;() {
+
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+
+                        Log.i(&quot;lybj&quot;,  integer+&quot;&quot;);
+                    }
+                });
+</code></pre><h3 id="结果-36"><a href="#结果-36" class="headerlink" title="结果"></a>结果</h3><h1 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h1><p>1.all()</p>
+<h3 id="做啥的？-39"><a href="#做啥的？-39" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>判断事件序列是否全部满足某个事件，如果都满足则返回 true，反之则返回 false。</p>
+<h3 id="怎么用？-25"><a href="#怎么用？-25" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.just(1, 2, 3, 4, 5)
+                .all(new Predicate&lt;Integer&gt;() {
+
+                    @Override
+                    public boolean test(Integer integer) throws Exception {
+
+                        return integer &lt;= 4;
+                    }
+                }).subscribe(new Consumer&lt;Boolean&gt;() {
+            @Override
+            public void accept(Boolean aBoolean) throws Exception {
+
+                Log.i(&quot;lybj&quot;,  aBoolean+&quot;&quot;);
+            }
+        });
+</code></pre><h3 id="结果-37"><a href="#结果-37" class="headerlink" title="结果"></a>结果</h3><h2 id="takeWhile-amp-takeUntil"><a href="#takeWhile-amp-takeUntil" class="headerlink" title="takeWhile() &amp; takeUntil()"></a>takeWhile() &amp; takeUntil()</h2><h3 id="做啥的？-40"><a href="#做啥的？-40" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>takeWhile(): 从左边开始，将满足条件的元素取出来，直到遇到第一个不满足条件的元素，则终止 takeUntil(): 从左边开始，将满足条件的元素取出来，直到遇到第一个满足条件的元素，则终止 filter(): 是将所有满足条件的数据都取出。</p>
+<h3 id="怎么用？-26"><a href="#怎么用？-26" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.just(1, 2, 3, 4, 5)
+                .takeWhile(new Predicate&lt;Integer&gt;() {
+
+                    @Override
+                    public boolean test(Integer integer) throws Exception {
+
+                        return integer &lt; 3;
+                    }
+                }).subscribe(new Consumer&lt;Integer&gt;() {
+
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+
+                        Log.i(&quot;lybj&quot;,  integer+&quot;&quot;);
+                    }
+                });
+</code></pre><h3 id="结果-38"><a href="#结果-38" class="headerlink" title="结果"></a>结果</h3><h2 id="skipWhile"><a href="#skipWhile" class="headerlink" title="skipWhile"></a>skipWhile</h2><h3 id="做啥的？-41"><a href="#做啥的？-41" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>从左边开始，根据条件跳过元素</p>
+<h3 id="怎么用？-27"><a href="#怎么用？-27" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.just(1,2,3,4,5,3,2,1,7)
+                .skipWhile(new Predicate&lt;Integer&gt;() {
+
+                    @Override
+                    public boolean test(Integer integer) throws Exception {
+
+                        return integer &lt; 3;
+                    }
+                }).subscribe(new Consumer&lt;Integer&gt;() {
+
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+
+                        Log.i(&quot;lybj&quot;,  integer+&quot;&quot;);
+                    }
+                });
+</code></pre><h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><h2 id="isEmpty-amp-defaultIfEmpty"><a href="#isEmpty-amp-defaultIfEmpty" class="headerlink" title="isEmpty() &amp; defaultIfEmpty()"></a>isEmpty() &amp; defaultIfEmpty()</h2><h3 id="做啥的？-42"><a href="#做啥的？-42" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>isEmpty(): 判断事件序列是否为空。</p>
+<p>defaultIfEmpty(): 如果观察者只发送一个 onComplete() 事件，则可以利用这个方法发送一个值。</p>
+<h3 id="怎么用？-28"><a href="#怎么用？-28" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.create(new ObservableOnSubscribe&lt;String&gt;() {
+
+            public void subscribe(@NonNull ObservableEmitter&lt;String&gt; emitter){
+
+                emitter.onComplete();
+            }
+        }).isEmpty()
+          .subscribe(new Consumer&lt;Boolean&gt;() {
+
+              @Override
+              public void accept(Boolean aBoolean) throws Exception {
+
+                  Log.i(&quot;lybj&quot;,  aBoolean+&quot;&quot;);
+              }
+          });
+</code></pre><h3 id="结果-39"><a href="#结果-39" class="headerlink" title="结果"></a>结果</h3><h2 id="contains"><a href="#contains" class="headerlink" title="contains()"></a>contains()</h2><h3 id="做啥的？-43"><a href="#做啥的？-43" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>判断事件序列中是否含有某个元素，如果有则返回 true，如果没有则返回 false。</p>
+<h3 id="怎么用？-29"><a href="#怎么用？-29" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>在Observable.just(1,2,3,4,5,6)
+                .contains(2)
+                .subscribe(new Consumer&lt;Boolean&gt;() {
+
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+
+                        Log.i(&quot;lybj&quot;,  aBoolean+&quot;&quot;);
+                    }
+                });
+</code></pre><h3 id="结果-40"><a href="#结果-40" class="headerlink" title="结果"></a>结果</h3><h2 id="sequenceEqual"><a href="#sequenceEqual" class="headerlink" title="sequenceEqual()"></a>sequenceEqual()</h2><h3 id="做啥的？-44"><a href="#做啥的？-44" class="headerlink" title="做啥的？"></a>做啥的？</h3><p>判断两个 Observable 发送的事件是否相同。</p>
+<h3 id="怎么用？-30"><a href="#怎么用？-30" class="headerlink" title="怎么用？"></a>怎么用？</h3><pre><code>Observable.sequenceEqual(Observable.just(&quot;小明&quot;, &quot;小方&quot;, &quot;小李&quot;),
+                Observable.just(&quot;小明&quot;, &quot;小方&quot;, &quot;小李&quot;, &quot;小张&quot;))
+                .subscribe(new Consumer&lt;Boolean&gt;() {
+
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+
+                        Log.i(&quot;lybj&quot;,  aBoolean+&quot;&quot;);
+                    }
+                });
+</code></pre><h3 id="结果-41"><a href="#结果-41" class="headerlink" title="结果"></a>结果</h3>
+            </div>
+            <hr>
+            <div>
+              <p>
+                
+                  <span>
+                <i class="iconfont icon-inbox"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/技术博客/">技术博客</a>
+                      &nbsp;
+                    
+                  </span>&nbsp;&nbsp;
+                
+                
+                  <span>
+                <i class="iconfont icon-tag"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/RxJava2/">RxJava2</a>
+                    
+                  </span>
+                
+              </p>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc-start"></div>
+<div id="toc">
+  <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <!-- <div>
+      <a href="javascript:;" rel="nofollow noopener"><b>G</b></a>
+      <i class="iconfont icon-love"></i>
+      <a href="javascript:;" rel="nofollow noopener"> <b>L</b></a>
+    </div> -->
+    <div >
+      <label style="color:gray;font-size: 12px;padding: 10px 50px;border-radius: 4px;">认真生活 享受生活</label>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var navHeight = $('#navbar').height();
+      var post = $('#post');
+      var toc = $('#toc');
+      var tocLimMax = post.offset().top + post.height() - navHeight;
+
+      $(window).scroll(function () {
+        var tocLimMin = $('#toc-start').offset().top - navHeight;
+        var scroH = document.body.scrollTop + document.documentElement.scrollTop;
+
+        if (tocLimMin <= scroH && scroH <= tocLimMax) {
+          toc.css({
+            'display': 'block',
+            'position': 'fixed',
+            'top': navHeight,
+          });
+        } else if (scroH <= tocLimMin) {
+          toc.css({
+            'position': '',
+            'top': '',
+          });
+        } else if (scroH > tocLimMax) {
+          toc.css('display', 'none');
+        }
+      });
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc > p').css('visibility', 'visible');
+      }
+      var offset = $('#board-ctn').css('margin-right')
+      $('#toc-ctn').css({
+        'right': offset
+      })
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "RxJava2教程&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

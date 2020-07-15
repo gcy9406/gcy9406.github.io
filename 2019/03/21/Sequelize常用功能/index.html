@@ -122,7 +122,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    561 字
+                    658 字
                   </span>
                 
 
@@ -130,7 +130,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      2 分钟
+                      3 分钟
                   </span>
                 
 
@@ -251,6 +251,69 @@ sequelize.transaction(function (t) {
   //主动回滚操作
   return t.rollback();
 });
+</code></pre><h2 id="sequelize在eggjs中的应用"><a href="#sequelize在eggjs中的应用" class="headerlink" title="sequelize在eggjs中的应用"></a>sequelize在eggjs中的应用</h2><h3 id="Op属性的运用"><a href="#Op属性的运用" class="headerlink" title="Op属性的运用"></a>Op属性的运用</h3><ul>
+<li>gt、lt的使用 </li>
+</ul>
+<pre><code>
+  GsmCard.getWillExpire = async function(offset, limit, timestamp) {
+
+    console.log(&#39;ddd&#39; + timestamp);
+
+    return await this.findAndCountAll({
+
+      where: {
+
+        expiry_date: {
+
+          [Op.lt]: timestamp,
+
+        },
+
+      },
+
+      offset: Number(offset),//偏移量
+
+      limit: Number(limit),//数量
+
+    });
+
+  };
+
+</code></pre><ul>
+<li>or的使用</li>
+</ul>
+<pre><code>
+  Account.getRootAccounts = async function() {
+
+    return await this.findAll({
+
+      where: {
+
+        [Op.or]: [
+
+          { type: &#39;admin&#39; }, { type: &#39;root&#39; },
+
+        ],
+
+      },
+
+    });
+
+  };
+
+</code></pre><h3 id="DISTINCT用法"><a href="#DISTINCT用法" class="headerlink" title="DISTINCT用法"></a>DISTINCT用法</h3><pre><code>
+    return await this.findAll({
+
+      attributes: [[ app.Sequelize.fn(&#39;DISTINCT&#39;, app.Sequelize.col(&#39;devicegroup&#39;)), &#39;devicegroup&#39; ]],
+
+      where: {
+
+        wechat,
+
+      },
+
+    });
+
 </code></pre><h2 id="更多参考"><a href="#更多参考" class="headerlink" title="更多参考"></a>更多参考</h2><blockquote>
 <p><a href="https://itbilu.com/nodejs/npm/V1PExztfb.html" target="_blank" rel="noopener">https://itbilu.com/nodejs/npm/V1PExztfb.html</a></p>
 </blockquote>
@@ -272,9 +335,9 @@ sequelize.transaction(function (t) {
                   <span>
                 <i class="iconfont icon-tag"></i>
                     
-                      <a class="hover-with-bg" href="/tags/NodeJs/">NodeJs</a>
-                    
                       <a class="hover-with-bg" href="/tags/sequelize/">sequelize</a>
+                    
+                      <a class="hover-with-bg" href="/tags/NodeJs/">NodeJs</a>
                     
                   </span>
                 
