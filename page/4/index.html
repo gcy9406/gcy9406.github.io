@@ -16,7 +16,7 @@
   <meta name="description" content>
   <meta name="author" content="Xavier">
   <meta name="keywords" content>
-  <title>归档 - 猫窝</title>
+  <title>猫窝</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
@@ -40,7 +40,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -100,7 +100,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('http://www.hhhub.cn:8000/f/8cc6359841/?raw=1') no-repeat center center;
+         style="background: url('http://www.hhhub.cn:8000/f/eaa53c219d/?raw=1') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -113,6 +113,10 @@
           </div>
 
           
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
         </div>
       </div>
     </div>
@@ -122,33 +126,77 @@
     
       <div class="container nopadding-md">
         <div class="py-5 z-depth-3" id="board"
-          >
+          style=margin-top:0>
           
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 31 篇文章</p>
-  <hr>
-  
+
+  <div class="row mx-auto index-card">
     
-      
-      <p class="h5">2019</p>
     
-    <a href="/2019/04/18/随笔2019-04-18/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">随笔2019-04-18</span>
-      <span style="float: right;">04-18</span>
-    </a>
-  
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2019/03/20/随笔2019-03-20/" target="_self">
+          <img src="https://bolg-1253436879.cos.ap-chengdu.myqcloud.com/WX20190320-230605.png" srcset="/img/loading.gif" alt="随笔2019-03-20"
+               class="index-img img-fluid rounded index-thumbnails">
+        </a>
+      </div>
     
-    <a href="/2019/04/06/随笔2019-04-06/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">随笔2019-04-06</span>
-      <span style="float: right;">04-06</span>
-    </a>
-  
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2019/03/20/随笔2019-03-20/">
+        <p class="h4 index-header">随笔2019-03-20</p>
+      </a>
+
+      <a href="/2019/03/20/随笔2019-03-20/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">每天最幸福的事情就是一边上班一边撸猫了。
+今天终于又把blog给重新搭起来了，之前的又白写了，因为源文件被我给删了。
+不过也罢，反正是写的东西也不是很有价值…
+之所以想起来重新弄博客的初衷，竟然是为了学习Flutter！
+希望这次自己能够记录一些有价值的东西，包括生活和学习…
 </div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-03-20&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/随笔/">随笔</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/撸猫/">撸猫</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 
@@ -250,7 +298,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "Where there is a will , there is a way...&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
