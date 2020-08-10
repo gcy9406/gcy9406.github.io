@@ -122,7 +122,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    400 字
+                    467 字
                   </span>
                 
 
@@ -130,7 +130,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      1 分钟
+                      2 分钟
                   </span>
                 
 
@@ -175,32 +175,83 @@
 </ol>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>npm install @baiducloud/sdk
 </code></pre><ul>
-<li>简单使用<br><code>`</code><br>import {TsdbDataClient} from ‘@baiducloud/sdk’;<br>// 需要使用babel转义为 require关键字<br>// 或者使用 var TsdbDataClient = require(‘@baiducloud/sdk’).TsdbDataClient;</li>
+<li>简单使用</li>
 </ul>
-<p>const config = {<br>    endpoint: <endpoint>,                  // 用户的时序数据库域名，形式如 http://{databaseName}.tsdb.iot.gz.baidubce.com<br>    credentials: {<br>        ak: <accesskeyid>,                //您的AccessKey<br>        sk: <secretaccesskey>              //您的SecretAccessKey<br>    }<br>};</secretaccesskey></accesskeyid></endpoint></p>
-<p>let client = new TsdbDataClient(config);</p>
-<p>client.getMetrics()                             // 调用所需要的的接口<br>    .then(response =&gt; console.log(response))    // 成功<br>    .catch(error =&gt; console.error(error));      // 失败</p>
-<pre><code>
-* 多域查询
-</code></pre><p>// 构建想要查询的queryList<br>var queryList = [<br>    {<br>        “metric”: “cpu_idle3”,<br>        “fields”: [ //结果中显示的域，要查哪些写哪些<br>            “field1”,<br>            “field2”<br>        ],<br>        “tags”: [ //结果中显示的tags,和域是一个数组，排列在域后面<br>            “rack”,<br>            “host”<br>        ],<br>        “filters”: { //过滤条件<br>            “start”: “5 hour ago”, //开始于什么时间，也可以使用绝对时间戳<br>            “fields”: [ //根据字段过滤<br>                {<br>                    “field”: “field1”,<br>                    “value”: “&gt;= 10”<br>                },<br>                {<br>                    “field”: “field2”,<br>                    “value”: “&lt;= 10”<br>                }<br>            ],<br>            “tags”: { //根据tag过滤，查询哪些tags的内容<br>                “rack”: [<br>                    “rack1”<br>                ],<br>                “host”: [<br>                    “server1”<br>                ]<br>            },</p>
-<pre><code>    },
-    &quot;groupBy&quot;: [//按tag进行分组
-        {
-            &quot;name&quot;: &quot;Tag&quot;,
-            &quot;tags&quot;: [
-                &quot;rack&quot;,
-                &quot;host&quot;
-            ]
-        }
-    ],
-    &quot;aggregators&quot;: [{ //聚合函数
-        &quot;name&quot;: &quot;Sum&quot;,//聚合函数类型
-        &quot;sampling&quot;: &quot;10 minutes&quot; //时间长度
-    }],  
-    &quot;limit&quot;: 1000//限制查询的数量
-}
-</code></pre><p>];<br>// 获取并打印查询结果<br>client.getDatapoints(<querylist>)<br>    .then(response =&gt; console.log(JSON.stringify(response.body)))           // 获取成功<br>    .catch(error =&gt; console.error(error));<br><code>`</code></querylist></p>
+<pre><code>import {TsdbDataClient} from &#39;@baiducloud/sdk&#39;;  
+// 需要使用babel转义为 require关键字
+// 或者使用 var TsdbDataClient = require(&#39;@baiducloud/sdk&#39;).TsdbDataClient;
 
+const config = {
+    endpoint: &lt;Endpoint&gt;,                  // 用户的时序数据库域名，形式如 http://{databaseName}.tsdb.iot.gz.baidubce.com
+    credentials: {
+        ak: &lt;AccessKeyID&gt;,                //您的AccessKey
+        sk: &lt;SecretAccessKey&gt;              //您的SecretAccessKey
+    }
+};
+
+let client = new TsdbDataClient(config);
+
+client.getMetrics()                             // 调用所需要的的接口
+    .then(response =&gt; console.log(response))    // 成功
+    .catch(error =&gt; console.error(error));      // 失败
+</code></pre><ul>
+<li>多域查询</li>
+</ul>
+<pre><code>// 构建想要查询的queryList
+var queryList = [
+    {
+        &quot;metric&quot;: &quot;cpu_idle3&quot;,
+        &quot;fields&quot;: [ //结果中显示的域，要查哪些写哪些
+            &quot;field1&quot;,
+            &quot;field2&quot;
+        ],
+        &quot;tags&quot;: [ //结果中显示的tags,和域是一个数组，排列在域后面
+            &quot;rack&quot;,
+            &quot;host&quot;
+        ],
+        &quot;filters&quot;: { //过滤条件
+            &quot;start&quot;: &quot;5 hour ago&quot;, //开始于什么时间，也可以使用绝对时间戳
+            &quot;fields&quot;: [ //根据字段过滤
+                {
+                    &quot;field&quot;: &quot;field1&quot;,
+                    &quot;value&quot;: &quot;&gt;= 10&quot;
+                },
+                {
+                    &quot;field&quot;: &quot;field2&quot;,
+                    &quot;value&quot;: &quot;&lt;= 10&quot;
+                }
+            ],
+            &quot;tags&quot;: { //根据tag过滤，查询哪些tags的内容
+                &quot;rack&quot;: [
+                    &quot;rack1&quot;
+                ],
+                &quot;host&quot;: [
+                    &quot;server1&quot;
+                ]
+            },
+
+        },
+        &quot;groupBy&quot;: [//按tag进行分组
+            {
+                &quot;name&quot;: &quot;Tag&quot;,
+                &quot;tags&quot;: [
+                    &quot;rack&quot;,
+                    &quot;host&quot;
+                ]
+            }
+        ],
+        &quot;aggregators&quot;: [{ //聚合函数
+            &quot;name&quot;: &quot;Sum&quot;,//聚合函数类型
+            &quot;sampling&quot;: &quot;10 minutes&quot; //时间长度
+        }],  
+        &quot;limit&quot;: 1000//限制查询的数量
+    }
+];
+// 获取并打印查询结果
+client.getDatapoints(&lt;queryList&gt;)
+    .then(response =&gt; console.log(JSON.stringify(response.body)))           // 获取成功
+    .catch(error =&gt; console.error(error)); 
+</code></pre>
             </div>
             <hr>
             <div>
