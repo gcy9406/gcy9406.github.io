@@ -122,7 +122,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    705 字
+                    800 字
                   </span>
                 
 
@@ -130,7 +130,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      3 分钟
+                      4 分钟
                   </span>
                 
 
@@ -240,7 +240,34 @@ yarn run dev # or npm run dev
     WriteRegExpandStr HKLM &quot;${INSTALL_REGISTRY_KEY}&quot; InstallLocation &quot;C:\mqtt-tool&quot;
     WriteRegExpandStr HKCU &quot;${INSTALL_REGISTRY_KEY}&quot; InstallLocation &quot;C:\mqtt-tool&quot;
 !macroend
-</code></pre><h2 id="常见问题及注意点"><a href="#常见问题及注意点" class="headerlink" title="常见问题及注意点"></a>常见问题及注意点</h2><h3 id="图标大小要正确"><a href="#图标大小要正确" class="headerlink" title="图标大小要正确"></a>图标大小要正确</h3><p>windows的ico大小不是256*256将无法打包成功</p>
+</code></pre><h2 id="常见问题及注意点"><a href="#常见问题及注意点" class="headerlink" title="常见问题及注意点"></a>常见问题及注意点</h2><h3 id="Webpack-ReferenceError-process-is-not-defined"><a href="#Webpack-ReferenceError-process-is-not-defined" class="headerlink" title="Webpack ReferenceError: process is not defined"></a>Webpack ReferenceError: process is not defined</h3><p>在.electron-vue下面的<br><strong>webpack.renderer.config.js</strong><br>和<br><strong>webpack.web.config.js</strong><br>修改为如下</p>
+<pre><code>new HtmlWebpackPlugin({
+      filename: &#39;index.html&#39;,
+      template: path.resolve(__dirname, &#39;../src/index.ejs&#39;),
+      //*********以下为添加内容*********
+      templateParameters(compilation, assets, options) {
+        return {
+          compilation: compilation,
+          webpack: compilation.getStats().toJson(),
+          webpackConfig: compilation.options,
+          htmlWebpackPlugin: {
+            files: assets,
+            options: options
+          },
+          process,
+        };
+      },
+      //*********以上为添加内容*********
+      minify: {
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+        removeComments: true
+      },
+      nodeModules: process.env.NODE_ENV !== &#39;production&#39;
+        ? path.resolve(__dirname, &#39;../node_modules&#39;)
+        : false
+    }),
+</code></pre><h3 id="图标大小要正确"><a href="#图标大小要正确" class="headerlink" title="图标大小要正确"></a>图标大小要正确</h3><p>windows的ico大小不是256*256将无法打包成功</p>
 <h3 id="windows和mac-os环境的node版本尽量保持一致"><a href="#windows和mac-os环境的node版本尽量保持一致" class="headerlink" title="windows和mac os环境的node版本尽量保持一致"></a>windows和mac os环境的node版本尽量保持一致</h3><h3 id="macos图标icns制作"><a href="#macos图标icns制作" class="headerlink" title="macos图标icns制作"></a>macos图标icns制作</h3><ol>
 <li>在桌面创建一个文件夹，如icon</li>
 <li>将源图片命名为pic.png，放在icon文件夹</li>
