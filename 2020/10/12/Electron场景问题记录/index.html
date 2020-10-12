@@ -122,7 +122,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    800 字
+                    802 字
                   </span>
                 
 
@@ -240,7 +240,7 @@ yarn run dev # or npm run dev
     WriteRegExpandStr HKLM &quot;${INSTALL_REGISTRY_KEY}&quot; InstallLocation &quot;C:\mqtt-tool&quot;
     WriteRegExpandStr HKCU &quot;${INSTALL_REGISTRY_KEY}&quot; InstallLocation &quot;C:\mqtt-tool&quot;
 !macroend
-</code></pre><h2 id="常见问题及注意点"><a href="#常见问题及注意点" class="headerlink" title="常见问题及注意点"></a>常见问题及注意点</h2><h3 id="Webpack-ReferenceError-process-is-not-defined"><a href="#Webpack-ReferenceError-process-is-not-defined" class="headerlink" title="Webpack ReferenceError: process is not defined"></a>Webpack ReferenceError: process is not defined</h3><p>在.electron-vue下面的<strong>webpack.renderer.config.js</strong>和<strong>webpack.web.config.js</strong>修改为如下</p>
+</code></pre><h2 id="常见问题及注意点"><a href="#常见问题及注意点" class="headerlink" title="常见问题及注意点"></a>常见问题及注意点</h2><h3 id="Webpack-ReferenceError-process-is-not-defined"><a href="#Webpack-ReferenceError-process-is-not-defined" class="headerlink" title="Webpack ReferenceError: process is not defined"></a>Webpack ReferenceError: process is not defined</h3><p>在 <strong>.electron-vue</strong> 下面的 <strong>webpack.renderer.config.js</strong> 和 <strong>webpack.web.config.js</strong> 修改为如下</p>
 <pre><code>new HtmlWebpackPlugin({
       filename: &#39;index.html&#39;,
       template: path.resolve(__dirname, &#39;../src/index.ejs&#39;),
