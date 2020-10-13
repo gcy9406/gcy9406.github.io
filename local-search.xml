@@ -8,7 +8,7 @@
     <link href="/2020/10/13/%E6%97%A5%E8%AE%B02020-19-13/"/>
     <url>/2020/10/13/%E6%97%A5%E8%AE%B02020-19-13/</url>
     
-    <content type="html"><![CDATA[<p>早上有点儿小雨，一切准备好后送老婆去上班。理论上没有任何不同的一天开始了。</p><p>8点45到单位，9点多工作就做完了。</p><p>所以今天是最清闲的一天吧。</p><p>所以今天准备把资料整理整理。</p><p>坚果云同步的时候写一篇日记，准备以后每天都写，当朋友圈使用吧。:-)</p>]]></content>
+    <content type="html"><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <div class="hbe-input-container">  <input type="password" id="hbePass" placeholder="" />    <label for="hbePass">输入密码方可查看</label>    <div class="bottom-line"></div>  </div>  <script id="hbeData" type="hbeData" data-hmacdigest="e8c1b4bc763c3b82d8f92913bed17c8013b5c606649dffcc24186569582370fd">2d09a5b7e317527810d5e863e73ea76da72fe7abf6bf1a2d7cf2c982fee33538e8541f022f72e3ec9ea0ceea578fda94972d486f7f70d9dcf1496e36b0423d9b90bc0384a9fca012d9670dc3f5b6860f2d2f62c683d555cfd36eecd542462853b50b2b230a6242edb20cc6bfea91d37b9f171ce2adde1036641dc6de7a3c64b6e8fa5a9c56caa1e3f1a4eb952270e73ad7298ebe50c83b0c8e07207c0098859460672bad98043f56aaa266e8ce1b257b0770b76da6f0535ea9bb7fae22464e3877661187c88830dd43d2c335c95a01fb80aebff356f1dfb9123b11b4bad40c6a61d780318bae632d2c5776e10861001378d704efaaf5138b9b2b2e5d02dff9d9e19ec7c107080955ea23b5ce6afd4af745101c5896e94497c85cee5edd9bf869c1e442b66ee0885c4abda0a2c20a82f8055776e3440aa9936305d78168a15e62bb36ff846964df29386b37cf1e96f499f032d1ffbfb7ca079f1717059c5b627c8be2267f9095e5e670b898b36792961de65da7b82a194c4801e9a33d0528330b</script></div><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
     
     
     <categories>
@@ -668,11 +668,11 @@
     
     <tags>
       
+      <tag>NodeJs</tag>
+      
       <tag>pm2</tag>
       
       <tag>开机启动</tag>
-      
-      <tag>NodeJs</tag>
       
     </tags>
     
@@ -803,9 +803,9 @@
     
     <tags>
       
-      <tag>NodeJs</tag>
-      
       <tag>sequelize</tag>
+      
+      <tag>NodeJs</tag>
       
     </tags>
     
