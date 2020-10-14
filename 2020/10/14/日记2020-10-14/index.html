@@ -18,7 +18,7 @@
   <meta name="description" content>
   <meta name="author" content="Xavier">
   <meta name="keywords" content>
-  <title>Sequelize常用功能 - 猫窝</title>
+  <title>日记2020-10-14 - 猫窝</title>
 
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
@@ -115,7 +115,7 @@
               
                 <p class="mt-3 post-meta">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  星期四, 三月 21日 2019, 11:06 上午
+                  星期三, 十月 14日 2020, 2:36 下午
                 </p>
               
 
@@ -124,7 +124,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    658 字
+                    9 字
                   </span>
                 
 
@@ -132,7 +132,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      3 分钟
+                      1 分钟
                   </span>
                 
 
@@ -160,166 +160,15 @@
           <div class="post-content mx-auto" id="post">
             
             <div class="markdown-body">
-              <h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>npm i sequelize --save
-</code></pre><h3 id="基本参数"><a href="#基本参数" class="headerlink" title="基本参数"></a>基本参数</h3><pre><code>global.seq =  new Sequelize(&#39;数据库名称&#39;, &#39;用户名&#39;, &#39;密码&#39;,{
-    host: &#39;数据库地址（如：127.0.0.1）&#39;,
-    dialect: &#39;数据库类型（如：mysql）&#39;,
-    port: 数据库端口（如：3306）,
-    pool: {//线程池配置
-        max: 5,
-        min: 0,
-        idle: 30000
-    },
-    logging:true,//是否在控制台打印sql语句
-    timezone: &#39;+08:00&#39; //东八时区，不设置存入数据库的时间可能不对
-});
-</code></pre><h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><pre><code>seq.define(&#39;test&#39;, {
-    // auto increment, primaryKey, unique
-    id: {type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true, unique: true},
-    updatedAt: {type: Sequelize.INTEGER, allowNull: false},
-    createdAt: {type: Sequelize.INTEGER, allowNull: false}
-}, {
-    timestamps: true,//设置为true，自动设置update和create
-    freezeTableName: true//设置为true，表的名字和数据库一直，否则要变成复数加s
-});
-</code></pre><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="order排序"><a href="#order排序" class="headerlink" title="order排序"></a>order排序</h3><pre><code>CameraList.findAll({
-    where:{
-        account:user
-    },
-    order: [
-        [&#39;timestamp&#39;, &#39;ASC&#39;],//第一字段
-        [&#39;name&#39;,&#39;ASC&#39;]//第二字段
-    ]
-})
-</code></pre><h3 id="where条件"><a href="#where条件" class="headerlink" title="where条件"></a>where条件</h3><pre><code>Project.findAll({
-  where: {
-    id: {
-      $and: {a: 5}           // AND (a = 5)
-      $or: [{a: 5}, {a: 6}]  // (a = 5 OR a = 6)
-      $gt: 6,                // id &gt; 6
-      $gte: 6,               // id &gt;= 6
-      $lt: 10,               // id &lt; 10
-      $lte: 10,              // id &lt;= 10
-      $ne: 20,               // id != 20
-      $between: [6, 10],     // BETWEEN 6 AND 10
-      $notBetween: [11, 15], // NOT BETWEEN 11 AND 15
-      $in: [1, 2],           // IN [1, 2]
-      $notIn: [1, 2],        // NOT IN [1, 2]
-      $like: &#39;%hat&#39;,         // LIKE &#39;%hat&#39;
-      $notLike: &#39;%hat&#39;       // NOT LIKE &#39;%hat&#39;
-      $iLike: &#39;%hat&#39;         // ILIKE &#39;%hat&#39; (case insensitive)  (PG only)
-      $notILike: &#39;%hat&#39;      // NOT ILIKE &#39;%hat&#39;  (PG only)
-      $overlap: [1, 2]       // &amp;&amp; [1, 2] (PG array overlap operator)
-      $contains: [1, 2]      // @&gt; [1, 2] (PG array contains operator)
-      $contained: [1, 2]     // &lt;@ [1, 2] (PG array contained by operator)
-      $any: [2,3]            // ANY ARRAY[2, 3]::INTEGER (PG only)
-    },
-    status: {
-      $not: false,           // status NOT FALSE
-    }
-  }
-})
-</code></pre><h3 id="替换字符串"><a href="#替换字符串" class="headerlink" title="替换字符串"></a>替换字符串</h3><pre><code>Project.findAll({ where: [&quot;id &gt; ?&quot;, 25] }).then(function(projects) {
-  // projects 是一个包含 Project 实例的数组，各实例的id 大于25
-})
-</code></pre><h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><pre><code>//求和
-Project.sum(&#39;field&#39;, where:{--条件--}  }).then(function(sum) {
-  // 输出和
-})
-//max
-Project.max(&#39;field&#39;, where:{--条件--}  }).then(function(max) {
-  // 输出最大值
-})
-//min
-Project.min(&#39;field&#39;, where:{--条件--}  }).then(function(max) {
-  // 输出最小值
-})
-</code></pre><h3 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h3><pre><code>//调用Sequelize初始化之后的sequelize对象
-sequelize.transaction(function (t) {
-    //返回最终的Promise
-  return User.create({
-    firstName: &#39;Abraham&#39;,
-    lastName: &#39;Lincoln&#39;
-  }, {transaction: t}).then(function (user) {
-    return user.setShooter({
-      firstName: &#39;John&#39;,
-      lastName: &#39;Boothe&#39;
-    }, {transaction: t});
-  });
-}).then(function (result) {
-  //主动调用commit提交结果
-  return t.commit();
-}).catch(function (err) {
-  //主动回滚操作
-  return t.rollback();
-});
-</code></pre><h2 id="sequelize在eggjs中的应用"><a href="#sequelize在eggjs中的应用" class="headerlink" title="sequelize在eggjs中的应用"></a>sequelize在eggjs中的应用</h2><h3 id="Op属性的运用"><a href="#Op属性的运用" class="headerlink" title="Op属性的运用"></a>Op属性的运用</h3><ul>
-<li>gt、lt的使用 </li>
-</ul>
-<pre><code>
-  GsmCard.getWillExpire = async function(offset, limit, timestamp) {
-
-    console.log(&#39;ddd&#39; + timestamp);
-
-    return await this.findAndCountAll({
-
-      where: {
-
-        expiry_date: {
-
-          [Op.lt]: timestamp,
-
-        },
-
-      },
-
-      offset: Number(offset),//偏移量
-
-      limit: Number(limit),//数量
-
-    });
-
-  };
-
-</code></pre><ul>
-<li>or的使用</li>
-</ul>
-<pre><code>
-  Account.getRootAccounts = async function() {
-
-    return await this.findAll({
-
-      where: {
-
-        [Op.or]: [
-
-          { type: &#39;admin&#39; }, { type: &#39;root&#39; },
-
-        ],
-
-      },
-
-    });
-
-  };
-
-</code></pre><h3 id="DISTINCT用法"><a href="#DISTINCT用法" class="headerlink" title="DISTINCT用法"></a>DISTINCT用法</h3><pre><code>
-    return await this.findAll({
-
-      attributes: [[ app.Sequelize.fn(&#39;DISTINCT&#39;, app.Sequelize.col(&#39;devicegroup&#39;)), &#39;devicegroup&#39; ]],
-
-      where: {
-
-        wechat,
-
-      },
-
-    });
-
-</code></pre><h2 id="更多参考"><a href="#更多参考" class="headerlink" title="更多参考"></a>更多参考</h2><blockquote>
-<p><a href="https://itbilu.com/nodejs/npm/V1PExztfb.html" target="_blank" rel="noopener">https://itbilu.com/nodejs/npm/V1PExztfb.html</a></p>
-</blockquote>
-
+              <div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">输入密码方可查看</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="919f11d614d9975cfaec6eb8ca2601339c2c866ba9819808a9417b6a79b3ae5c">886b00afb18a6c2bbaddebe7437c38fdc258780e2a2e55e4640ed52367b320d30dbd157433ed1b51c9d8b540b94c825ab989f5aa7b747123fdadd2061ccc171e10836c1742cdbb2567118b02bed92892f91366cfb3ed255c59549efe7d23611a20d261a5965b4ab0a4a559a7da354853822d2031ae5cad0d41fc66ee3bc9a4f88e86f4ed7a05069b4c48e2ce0b7ac9a627b8ff3820e1509bd4610ba065ef6ee59770fcb206feccae3ba827bf46fa1f75925b3c7b91405187fc64ee5a8df4983748653eabfea47c4805bea954d398c5431d18857da25cd7f9a257040093f7a8621a26f3a96776f6acfa401c60983864e3bcc54c653236e643541b5665eed46e8462a5d7fa20643685b24bc18e1d866f344660a90f854fe7fd385a1a6206a793f91977b1535e43a2f0ed824a51e44f7a8c6bfc5df073d3232952d3a8201699497d174cd6a4646476e033462374108d9523574ce9ee29920e91e61ee66b7158450d7f7620523b92bbe72ce764d3be69804791174647fccb4136f6eba0fba56612cc6255bbd131f16d88ad5c0d55e2aac7bedda345595d8236d245b98d27c4021b981d48e94b1cff20dc18aa5d4f972161e14e2e0ad5c8e2f1e2c351f2dfb9a891c22e541357eb1e8e52e55e805d0744b2d532b1e3c0b69bffb5a67e5080409de3f3794bbaf12c4e78d213ba70d38cee01f742d03e2c2bd76a04d6c43729a205543fcf29786afeb0aa67db2c9ef9ceddc6a39d86f362836e33516eeccf2a7b69eaaa81dced1cd522c7d36c42785e02eaf3ba73b9a919ba8ced88e92a067e72f06995cd68a185ec5183e8f4de41153643763c78e26d05afe9e29a50e3aa082befe8278a0ffaa27ff4a0935975ec05cdc6d2e5ba1fb652bbe77282455a81158eb65e359093b8c1744032dcdb175666d80ceb886552ec234d0dd8537947cb8bb19f0393dab0f3ef848afc51cba7fa82d721e13492a76595d00458ee24b2039df8c651d6fd9d890a4598f1a311f2ddb0109bb3c71098f5a2829406d45025386f485c87605dcef9480027faee0ddd74519b30f3d38521a26e6cc8f91b8db4063c3eb0d23a549c8f82e03b242bb55114fba96b808653b27c7fed537ac672c59fa1eae3a94c3c7f0706df995a915fefbf317d6008352134d728fbba58f3bb35584bbb230be0b7bc050167115ff2257772068ae7017bc9c727009b00df4716b810aef281c4d2a81cf4d1a34a670600564bf4f1b148a157820f279a7f1d65cc6e944e836ef5895f1be2a6eee3946563c170cf9dde9b39522e91ff199227505f05687354378a207ec8702eadb52e968fa5da1d92732429c50bf88a28a936c6931bf2e4de200864d37b1d05f68f916eda42facba4f9b3ffa6e5c7de0114d3bb94bfb3647d7a33844aac59a7df335bee5fdb480560d656e68cdb17857c627c1d02181782ab1e8da4012d19904fb64711d0498d0b90f17be15e5a22f3262d2f899c9e8cbf71f4ca863d74267ab0fb46666a4eaa06bea979dc6aa9cd979fdab9d20e6aa96e6c3bda2eca3386df493d04ce4179f10729c13c0ece1a9bff77e8d8e0cdd695168b9df0a88922e319b7bb0aa3b5531ea5135819d4cec9fead178d23a7f7ee3e5fd40f572308a82f08e9d6d87c83d76571080cd896c3e523f1184b9dadcb1050c4df363a8d91ae394f904695f1d00af6a393d870d9206172f74a5cfe7c1ac72aeb1323e0af595a5bafd6ccd117d8c43bcfa5bd83e8c6ee856cc1b5994d3f0d9ded83919401e1497c8c614ad3606218c42c10b9029c3e2d6c1483d35032bb2177f9deac2c7c5a75eb0a2b97e4aec1f79429733fa6e43ac5c9d9af4177c994875010807c1da92e8787bd65dd9a36974289f69fef0e534445cd8b5bee5984263e66fda8bcfc735a8474f5e8182d197bc2593e130ede24a00245ea9b981095728ccc42796163001bd25b07dc068c89ac986b8b010331f5cb215c8a36991c2371f49c231e24f8708f69bb8c73ad5d63d2bf7ef66e6f22d4f5942fb95c0e7c59b2fd4e21002ee86af4685e725f2148aeeef4382e2ff73a5026effe5107d83dc4bdae0d9ceaaac5e95d547bb349ad5c128347e4b377f0f6c8c6e86c8d9c954da6ae9578d4703a345e1afde7e714a4096826fe12548788d87d782e3eb384653ee71fc1c863724671ea4e09720bcd5fe33175b551f9a293407f76187dbfe391c89f95a63896dad20cec0eb0d4fa6847e4d370b2d283ebab7cd0eb407a2321e86b5941c2ac9739c8f1c240c9f2d89700d074745e2fdd0c0db9d105dfd646f77516ba98a9ddbe1e2114cccdada03b399d0cf3712859c8b23c928e</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
             </div>
             <hr>
             <div>
@@ -328,20 +177,11 @@ sequelize.transaction(function (t) {
                   <span>
                 <i class="iconfont icon-inbox"></i>
                     
-                      <a class="hover-with-bg" href="/categories/技术博客/">技术博客</a>
+                      <a class="hover-with-bg" href="/categories/日记/">日记</a>
                       &nbsp;
                     
                   </span>&nbsp;&nbsp;
                 
-                
-                  <span>
-                <i class="iconfont icon-tag"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/sequelize/">sequelize</a>
-                    
-                      <a class="hover-with-bg" href="/tags/NodeJs/">NodeJs</a>
-                    
-                  </span>
                 
               </p>
               
@@ -512,7 +352,7 @@ sequelize.transaction(function (t) {
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Sequelize常用功能&nbsp;",
+        "日记2020-10-14&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
