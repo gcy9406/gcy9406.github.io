@@ -161,8 +161,8 @@
             
             <div class="markdown-body">
               <h1 id="微信支付环境"><a href="#微信支付环境" class="headerlink" title="微信支付环境"></a>微信支付环境</h1><h2 id="在微信支付后台配置好支付目录"><a href="#在微信支付后台配置好支付目录" class="headerlink" title="在微信支付后台配置好支付目录"></a>在微信支付后台配置好支付目录</h2><p>在微信商户平台（pay.weixin.qq.com）设置您的公众号支付支付目录，设置路径：商户平台–&gt;产品中心–&gt;开发配置.</p>
-<p>公众号支付需要配置支付授权目录，将在这个目录里面发起支付，如果不设置是无法调用微信支付的。<br>如：<a href="http://www.hhhub.cn/wechat/pay" target="_blank" rel="noopener">http://www.hhhub.cn/wechat/pay</a><br><img src="http://www.hhhub.cn:8000/f/f9a4a2c1e1/?raw=1" srcset="/img/loading.gif" alt="wechat_pay"></p>
-<h2 id="公众号后台配置"><a href="#公众号后台配置" class="headerlink" title="公众号后台配置"></a>公众号后台配置</h2><p>公众号支付必须要有openid才行，这里需要在公众号配置网页授权域名。<br>这里需要让微信能够访问到txt中的内容。<br><img src="http://www.hhhub.cn:8000/f/1088f751ae/?raw=1" srcset="/img/loading.gif" alt="wechat_pay"></p>
+<p>公众号支付需要配置支付授权目录，将在这个目录里面发起支付，如果不设置是无法调用微信支付的。<br>如：<a href="http://www.hhhub.cn/wechat/pay" target="_blank" rel="noopener">http://www.hhhub.cn/wechat/pay</a><br><img src="http://www.hhhub.cn:8000/f/f9a4a2c1e1/?raw=1" alt="wechat_pay"></p>
+<h2 id="公众号后台配置"><a href="#公众号后台配置" class="headerlink" title="公众号后台配置"></a>公众号后台配置</h2><p>公众号支付必须要有openid才行，这里需要在公众号配置网页授权域名。<br>这里需要让微信能够访问到txt中的内容。<br><img src="http://www.hhhub.cn:8000/f/1088f751ae/?raw=1" alt="wechat_pay"></p>
 <p>使用nodejs可以简单实现</p>
 <pre><code>var  http  =  require(&#39;http&#39;);  
 http.createServer(function  (request,  response)  {  
