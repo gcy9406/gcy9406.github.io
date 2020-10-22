@@ -276,7 +276,13 @@ sips -z 1024 1024   pic.png --out tmp.iconset/icon_512x512@2x.png
 <li>执行以下命令完成创建<pre><code>iconutil -c icns tmp.iconset -o pic.icns
 </code></pre></li>
 </ol>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<h3 id="js-cookie不起作用"><a href="#js-cookie不起作用" class="headerlink" title="js-cookie不起作用"></a>js-cookie不起作用</h3><p>在打包情况下使用js-cookie无法存储cookie</p>
+<p>可以使用<em>sessionStorage</em>替代</p>
+<pre><code>//设置值
+sessionStorage.setItem(&#39;username&#39;, &#39;xxx&#39;)
+//获取值
+const username = sessionStorage.getItem(&#39;username&#39;)
+</code></pre><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
 <p><a href="https://juejin.im/post/6844903693683261453" target="_blank" rel="noopener">https://juejin.im/post/6844903693683261453</a></p>
 </blockquote>
 
