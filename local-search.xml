@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Vue常见问题整理</title>
+    <link href="/2020/10/22/Vue%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/"/>
+    <url>/2020/10/22/Vue%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Avoid-mutating-a-prop-directly-since-the-value-will-be-overwritten-whenever-the-parent-component-re-renders-Instead-use-a-data-or-computed-property-based-on-the-prop’s-value"><a href="#Avoid-mutating-a-prop-directly-since-the-value-will-be-overwritten-whenever-the-parent-component-re-renders-Instead-use-a-data-or-computed-property-based-on-the-prop’s-value" class="headerlink" title="Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop’s value"></a>Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop’s value</h2><p>这是由于直接修改了属性值导致</p><p>原代码如下，注意属性drawer</p><pre><code>&lt;template&gt;    &lt;el-drawer    title=&quot;抽屉&quot;    :visible.sync=&quot;drawer&quot;    :with-header=&quot;false&quot;    size=&quot;600px&quot;    @open=&quot;openDrawer&quot;    @closed=&quot;drawerClosed&quot;    direction=&quot;rtl&quot;&gt;    &lt;/el-drawer&gt;&lt;/template&gt;...  props: {    drawer: {      type: Boolean,      required: true    }  },...drawerClosed() {    this.drawer = false}</code></pre><p>修改成不要直接修改属性，如下：</p><pre><code>&lt;template&gt;    &lt;el-drawer    title=&quot;抽屉&quot;    :visible.sync=&quot;drawerVisiable&quot; //自定义变量    :with-header=&quot;false&quot;    size=&quot;600px&quot;    @open=&quot;openDrawer&quot;    @closed=&quot;drawerClosed&quot;    direction=&quot;rtl&quot;&gt;    &lt;/el-drawer&gt;&lt;/template&gt;...  watch: {    drawer(newValue, oldValue) {      this.drawerVisable = newValue    }  },...drawerClosed() {    this.drawerVisable = false}</code></pre><p>结论：不要直接修改prop的值，用一个新的自定义的值替代属性变量。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>NodeJs</tag>
+      
+      <tag>vue</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>日记2020-10-21</title>
     <link href="/2020/10/21/%E6%97%A5%E8%AE%B02020-10-21/"/>
     <url>/2020/10/21/%E6%97%A5%E8%AE%B02020-10-21/</url>
