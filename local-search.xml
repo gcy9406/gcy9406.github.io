@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>IndexedDB使用---Dexie</title>
+    <link href="/2020/10/23/IndexedDB%E4%BD%BF%E7%94%A8-Dexie/"/>
+    <url>/2020/10/23/IndexedDB%E4%BD%BF%E7%94%A8-Dexie/</url>
+    
+    <content type="html"><![CDATA[<h1 id="安装使用"><a href="#安装使用" class="headerlink" title="安装使用"></a>安装使用</h1><ul><li>安装<pre><code>npm i dexie -S</code></pre></li><li>使用</li></ul><p>version是数据库的版本，如果数据变化就改变数据库版本</p><p>++id就是自增id，自动生成</p><p>[username+password]为and操作的时候用，内容也是自动生成</p><pre><code>import Dexie from &#39;dexie&#39; //引入const db = new Dexie(&#39;test-db&#39;)//创建数据库db.version(1).stores({  accounts: &#39;++id,username,passowrd,type,name,[username+password]&#39;})//创建表db.open()//打开数据库</code></pre><h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h2 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h2><h3 id="单个添加"><a href="#单个添加" class="headerlink" title="单个添加"></a>单个添加</h3><pre><code>const account = {    username: &#39;test&#39;,    password: &#39;123&#39;,    type: 0,    name: &#39;测试&#39;}db.accounts.put(account)</code></pre><h3 id="批量添加"><a href="#批量添加" class="headerlink" title="批量添加"></a>批量添加</h3><pre><code>const accArr = []db.accounts.bulkAdd(accArr)</code></pre><h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><pre><code>db.accounts.where(&#39;username&#39;).equals(username).modify({password:&#39;xxx&#39;}));</code></pre><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><pre><code>db.accounts.where(&#39;username&#39;).equals(&#39;username&#39;).delete()</code></pre><h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><h3 id="查询所有"><a href="#查询所有" class="headerlink" title="查询所有"></a>查询所有</h3><pre><code>db.accounts.toArray()</code></pre><h3 id="查询第一个"><a href="#查询第一个" class="headerlink" title="查询第一个"></a>查询第一个</h3><pre><code>db.accounts.where(&#39;username&#39;).equals(&#39;username&#39;).first()</code></pre><h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><pre><code>//降序db.accounts.where(&#39;username&#39;).equals(&#39;username&#39;).orderBy(&#39;time&#39;).desc().toArray()//升序db.accounts.where(&#39;username&#39;).equals(&#39;username&#39;).orderBy(&#39;time&#39;).asc().toArray()</code></pre><h3 id="限制和偏移"><a href="#限制和偏移" class="headerlink" title="限制和偏移"></a>限制和偏移</h3><pre><code>db.accounts.offset(1000).limit(2)</code></pre><h3 id="and查询"><a href="#and查询" class="headerlink" title="and查询"></a>and查询</h3><pre><code>//and查询，如下格式，同时创建的表也要加上[username+password]列db.accounts.where(&#39;[username+password]&#39;).equals([username,password])//函数and查询db.accounts.where(&#39;username&#39;).equals(username).and(function(account) {     return account.password === password})</code></pre><h3 id="or查询"><a href="#or查询" class="headerlink" title="or查询"></a>or查询</h3><pre><code>db.accounts.where(&#39;username&#39;).equals(username).or(&#39;password&#39;).equals(passowrd)</code></pre><p>本文主要引用下文：</p><blockquote><p><a href="https://ahuigo.github.io/b/ria/js-indexedDB#/" target="_blank" rel="noopener">https://ahuigo.github.io/b/ria/js-indexedDB#/</a></p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>IndexedDB</tag>
+      
+      <tag>Dexie</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>日记2020-10-22</title>
     <link href="/2020/10/22/%E6%97%A5%E8%AE%B02020-10-22/"/>
     <url>/2020/10/22/%E6%97%A5%E8%AE%B02020-10-22/</url>
