@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>EggJs初始化工作</title>
+    <link href="/2020/10/27/EggJs%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%A5%E4%BD%9C/"/>
+    <url>/2020/10/27/EggJs%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%A5%E4%BD%9C/</url>
+    
+    <content type="html"><![CDATA[<h1 id="EggJs初始化工作"><a href="#EggJs初始化工作" class="headerlink" title="EggJs初始化工作"></a>EggJs初始化工作</h1><p>将eggjs部署到服务器，使用npm start启动的时候，有时候出现初始化的工作被执行了多次。</p><p>很多时候我们只需要执行一次就行了。</p><p>这种情况在dev下是正常只执行一次，因为dev只有一个进程，所以这里也可以将prod改为单线程运行:-)</p><h2 id="使用定时器"><a href="#使用定时器" class="headerlink" title="使用定时器"></a>使用定时器</h2><p>定时器是可以指定只有一个worker工作的，所以可以利用这点进行只执行一次的操作。</p><pre><code>&#39;use strict&#39;;const Subscription = require(&#39;egg&#39;).Subscription;class UpdateCache extends Subscription {  static get schedule() {    return {      type: &#39;worker&#39;, // 指定只有一个worker执行      immediate: true,//设置为立即执行      //interval: &#39;1m&#39;, //取消时间设置    };  }  async subscribe() {    console.log(&#39;这样就只会在启动的时候执行一次&#39;);  }}module.exports = UpdateCache;</code></pre><h2 id="使用Agent"><a href="#使用Agent" class="headerlink" title="使用Agent"></a>使用Agent</h2><p>Agent的详细可以看官方文档</p><blockquote><p><a href="https://eggjs.org/zh-cn/core/cluster-and-ipc.html" target="_blank" rel="noopener">https://eggjs.org/zh-cn/core/cluster-and-ipc.html</a></p></blockquote><h3 id="在根目录新建app-js"><a href="#在根目录新建app-js" class="headerlink" title="在根目录新建app.js"></a>在根目录新建app.js</h3><pre><code>//app.js&#39;use strict&#39;;class AppBootHook {  constructor(app) {    this.app = app;  }  async didReady() {    const ctx = await this.app.createAnonymousContext();    //监听自定义agent的my_action    this.app.messenger.on(&#39;my_action&#39;, data =&gt; {        //这里监听agent发送过来下的信息        //执行初始化的函数，可以执行服务中的函数,如        //ctx.service.task.initRedis();    });  }}module.exports = AppBootHook;</code></pre><h3 id="在根目录新建agent-js"><a href="#在根目录新建agent-js" class="headerlink" title="在根目录新建agent.js"></a>在根目录新建agent.js</h3><pre><code>// agent.js&#39;use strict&#39;;module.exports = agent =&gt; {  // 在这里写你的初始化逻辑  // 也可以通过 messenger 对象发送消息给 App Worker  // 但需要等待 App Worker 启动成功后才能发送，不然很可能丢失  agent.messenger.on(&#39;egg-ready&#39;, () =&gt; {    //这里的sendRandom是将my_action发给随机的一个worker，所以只会执行一次      agent.messenger.sendRandom(&#39;my_action&#39;, &#39;测试&#39;);  });};</code></pre><p><strong>附上其他发送的其他方式</strong></p><ul><li>app.messenger.broadcast(action, data)：发送给所有的 agent / app 进程（包括自己）</li><li>app.messenger.sendToApp(action, data): 发送给所有的 app 进程<ul><li>在 app 上调用该方法会发送给自己和其他的 app 进程</li><li>在 agent 上调用该方法会发送给所有的 app 进程</li></ul></li><li>app.messenger.sendToAgent(action, data): 发送给 agent 进程<ul><li>在 app 上调用该方法会发送给 agent 进程</li><li>在 agent 上调用该方法会发送给 agent 自己</li></ul></li><li>agent.messenger.sendRandom(action, data):<ul><li>app 上没有该方法（现在 Egg 的实现是等同于 sentToAgent）</li><li>agent 会随机发送消息给一个 app 进程（由 master 来控制发送给谁）</li></ul></li><li>app.messenger.sendTo(pid, action, data): 发送给指定进程</li></ul><hr><p>以上两种方法基本解决了需求</p><p>也解决了为什么我的服务总是寸几遍数据库的问题(‘ ^ ’)</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>eggjs</tag>
+      
+      <tag>agent</tag>
+      
+      <tag>定时</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>日记2020-10-26</title>
     <link href="/2020/10/26/%E6%97%A5%E8%AE%B02020-10-26/"/>
     <url>/2020/10/26/%E6%97%A5%E8%AE%B02020-10-26/</url>

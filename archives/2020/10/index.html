@@ -132,12 +132,18 @@
                 
 
 <div class="list-group">
-  <p class="h4">共计 41 篇文章</p>
+  <p class="h4">共计 42 篇文章</p>
   <hr>
   
     
       
       <p class="h5">2020</p>
+    
+    <a href="/2020/10/27/EggJs初始化工作/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">EggJs初始化工作</span>
+      <span style="float: right;">10-27</span>
+    </a>
+  
     
     <a href="/2020/10/26/日记2020-10-26/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">日记2020-10-26</span>
@@ -192,13 +198,19 @@
       <span style="float: right;">10-13</span>
     </a>
   
-    
-    <a href="/2020/10/12/Electron场景问题记录/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Electron场景问题记录</span>
-      <span style="float: right;">10-12</span>
-    </a>
-  
 </div>
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/10/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/10/page/2/"><i class="fas fa-angle-double-right"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 
