@@ -304,6 +304,17 @@ sequelize.transaction(function (t) {
 
     });
 
+</code></pre><h3 id="插入或更新Upsert"><a href="#插入或更新Upsert" class="headerlink" title="插入或更新Upsert"></a>插入或更新Upsert</h3><pre><code>  //ID需要自己指定不能设置为自增
+  Register.update = async function (data) {
+    return await this.upsert(data)
+  }
+
+</code></pre><h3 id="批量插入或更新"><a href="#批量插入或更新" class="headerlink" title="批量插入或更新"></a>批量插入或更新</h3><p>批量插入的数据先转成数组，在updateOnDuplicate后设置需要更新的字段</p>
+<pre><code>  Register.updateAll = async function (data) {
+    return await this.bulkCreate(data, {
+      updateOnDuplicate:[&#39;value&#39;]
+    })
+  }
 </code></pre><h2 id="更多参考"><a href="#更多参考" class="headerlink" title="更多参考"></a>更多参考</h2><blockquote>
 <p><a href="https://itbilu.com/nodejs/npm/V1PExztfb.html" target="_blank" rel="noopener">https://itbilu.com/nodejs/npm/V1PExztfb.html</a></p>
 </blockquote>
