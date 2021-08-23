@@ -155,6 +155,10 @@
 <pre><code>Finally, tell me your name for the client certificate.
 Please, use one word only, no special characters.
 Client name: client
+</code></pre><h1 id="查看运行状况"><a href="#查看运行状况" class="headerlink" title="查看运行状况"></a>查看运行状况</h1><p>正常安装好以后就已经启动好了</p>
+<pre><code>ps -ef | grep vpn
+nobody     52391       1  0 17:10 ?        00:00:02 /usr/sbin/openvpn --status /run/openvpn-server/status-server.log --status-version 2 --suppress-timestamps --config server.conf
+root      106312  104310  0 22:24 pts/0    00:00:00 grep --color=auto vpn
 </code></pre><h1 id="启动或停止"><a href="#启动或停止" class="headerlink" title="启动或停止"></a>启动或停止</h1><pre><code>//启动
 systemctl start openvpn@server
 //停止
