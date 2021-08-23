@@ -4,6 +4,46 @@
   
   
   <entry>
+    <title>Ubuntu20安装openvpn</title>
+    <link href="/2021/08/23/Ubuntu20%E5%AE%89%E8%A3%85openvpn/"/>
+    <url>/2021/08/23/Ubuntu20%E5%AE%89%E8%A3%85openvpn/</url>
+    
+    <content type="html"><![CDATA[<p>Ubuntu20用用脚本安装openvpn<br><a id="more"></a></p><h1 id="下载脚本"><a href="#下载脚本" class="headerlink" title="下载脚本"></a>下载脚本</h1><p><a href="https://bolg-1253436879.cos.ap-chengdu.myqcloud.com/uPic/openvpn-install.sh" target="_blank" rel="noopener">openvpn-install.sh</a></p><h1 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h1><pre><code>bash openvpn-install.sh</code></pre><p>安装过程中一般都选择默认即可,下面的Client name,可以自定义,保持默认即可</p><pre><code>Finally, tell me your name for the client certificate.Please, use one word only, no special characters.Client name: client</code></pre><h1 id="启动或停止"><a href="#启动或停止" class="headerlink" title="启动或停止"></a>启动或停止</h1><pre><code>//启动systemctl start openvpn@server//停止systemctl stop openvpn@server</code></pre><h1 id="客户端连接"><a href="#客户端连接" class="headerlink" title="客户端连接"></a>客户端连接</h1><p>将生成的证书复制出来，可以用来连接<br>/root/xxx.ovpn</p><h1 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h1><p><a href="https://bolg-1253436879.cos.ap-chengdu.myqcloud.com/uPic/Tunnelblick_3.8.5a_build_5671.dmg" target="_blank" rel="noopener">Mac</a><br><a href="https://bolg-1253436879.cos.ap-chengdu.myqcloud.com/uPic/openvpn-connect-3.3.1.2222_signed.msi" target="_blank" rel="noopener">Windows</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>ubuntu</tag>
+      
+      <tag>openvpn</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Docker使用及问题汇总</title>
+    <link href="/2021/07/07/Docker%E4%BD%BF%E7%94%A8%E5%8F%8A%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/"/>
+    <url>/2021/07/07/Docker%E4%BD%BF%E7%94%A8%E5%8F%8A%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>日记2021-01-15</title>
     <link href="/2021/01/15/%E6%97%A5%E8%AE%B02021-01-15/"/>
     <url>/2021/01/15/%E6%97%A5%E8%AE%B02021-01-15/</url>
@@ -974,11 +1014,11 @@
     
     <tags>
       
+      <tag>NodeJs</tag>
+      
       <tag>pm2</tag>
       
       <tag>开机启动</tag>
-      
-      <tag>NodeJs</tag>
       
     </tags>
     
@@ -1109,9 +1149,9 @@
     
     <tags>
       
-      <tag>NodeJs</tag>
-      
       <tag>sequelize</tag>
+      
+      <tag>NodeJs</tag>
       
     </tags>
     
